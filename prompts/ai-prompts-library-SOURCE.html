@@ -557,7 +557,7 @@ function card(p){return `<div class="p"><div class="h"><div class="n">${p.n}</di
 
 /* ============ page templates ============ */
 let TOTAL=30; // recomputed from PLAN.length below, before rendering
-const foot=no=>`<div class="pf"><span class="fbrand">${FM} aiopentec · aiopentec.github.io</span><span class="no">${no} / ${TOTAL}</span></div>`;
+const foot=no=>`<div class="pf"><span class="fbrand">${FM} aiopentec · aiopentec.github.io/prompts</span><span class="no">${no} / ${TOTAL}</span></div>`;
 const pad=n=>(n<10?'0':'')+n;
 
 function coverPg(){return `<div class="page cover"><div class="cbg"></div><div class="dots"></div>
@@ -574,7 +574,7 @@ function coverPg(){return `<div class="page cover"><div class="cbg"></div><div c
   <li><svg class="ico"><use href="#i-check"/></svg>Just Copy, Customize, and Execute</li>
  </ul>
  <div class="cv-stats"><span>37 PROFESSIONAL AI PROMPTS</span><i></i><span>5 CATEGORIES</span><i></i><span>CHATGPT · CLAUDE · ANY AI ASSISTANT</span></div>
- <div class="urltag" style="margin-top:30px">AIOPENTEC.GITHUB.IO · FREE · NO SIGN-UP</div>
+ <div class="urltag" style="margin-top:30px">AIOPENTEC.GITHUB.IO/PROMPTS · FREE · NO SIGN-UP</div>
 </div></div>`}
 
 function howtoPg(pgno){const rows=Object.keys(CATS).map(k=>{const c=CATS[k];
@@ -639,7 +639,7 @@ function backPg(){const rows=Object.keys(CATS).map(k=>{const c=CATS[k];
   <div class="wic"><div class="lbl">WHAT'S INSIDE</div>${rows}</div>
   <div class="bk-big">Copy. Customize. Execute.</div>
   <p class="bk-sub">Ready to 10X your AI results? Just copy, customize, and execute — better outputs from ChatGPT &amp; Claude start here.</p>
-  <div class="urltag" style="margin-top:24px">AIOPENTEC.GITHUB.IO</div>
+  <div class="urltag" style="margin-top:24px">AIOPENTEC.GITHUB.IO/PROMPTS</div>
   <div class="cv-stats" style="margin-top:26px"><span>GET BETTER RESULTS FROM CHATGPT &amp; CLAUDE</span><i></i><span>READY-TO-USE PROMPTS FOR EVERY BUSINESS</span></div>
  </div></div>`}
 
