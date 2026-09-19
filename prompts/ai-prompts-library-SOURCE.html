@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AI Prompts Library — aiopentec</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+@page{size:8.5in 11in;margin:0}
+html,body{background:#e2e8f0}
+body{font-family:Inter,'Segoe UI',Arial,sans-serif;color:#0f172a;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:816px;min-height:1056px;margin:0 auto;background:#fff;position:relative;overflow:hidden;page-break-after:always}
+.pg{padding:44px 58px 74px;--c:#3b82f6;--cd:#1d4ed8;--cl:#dbeafe;--cx:#eff6ff}
+.s-cc{--c:#3b82f6;--cd:#1d4ed8;--cl:#dbeafe;--cx:#eff6ff}
+.s-bs{--c:#6366f1;--cd:#4f46e5;--cl:#e0e7ff;--cx:#eef2ff}
+.s-pt{--c:#f59e0b;--cd:#b45309;--cl:#fef3c7;--cx:#fffbeb}
+.s-rd{--c:#10b981;--cd:#047857;--cl:#d1fae5;--cx:#ecfdf5}
+.s-un{--c:#8b5cf6;--cd:#6d28d9;--cl:#ede9fe;--cx:#f5f3ff}
+.pg::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--c),var(--cd))}
+.rh{display:flex;justify-content:space-between;align-items:center;padding-bottom:8px;border-bottom:1px solid #e2e8f0;margin-bottom:14px}
+.rh .b{font-size:8px;font-weight:800;letter-spacing:.16em;color:#94a3b8}
+.rh .cat{font-size:8px;font-weight:800;letter-spacing:.14em;color:var(--cd);display:flex;align-items:center;gap:6px}
+.rh .cat i{width:6px;height:6px;border-radius:2px;background:var(--c)}
+.pf{position:absolute;bottom:26px;left:58px;right:58px;display:flex;justify-content:space-between;align-items:center}
+.fbrand{display:flex;align-items:center;gap:7px;font:700 8px 'JetBrains Mono',monospace;letter-spacing:.1em;color:#94a3b8}
+.fbrand svg{display:block}
+.no{color:#fff;background:var(--c);padding:2px 9px;border-radius:20px;font:700 8px 'JetBrains Mono',monospace;letter-spacing:.08em}
+.ico{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.p{border:1px solid #e2e8f0;border-left:3px solid var(--c);border-radius:10px;padding:12px 14px 10px;margin-bottom:12px;background:#fff;page-break-inside:avoid;break-inside:avoid;box-shadow:0 1px 2px rgba(15,23,42,.05)}
+.h{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+.n{min-width:24px;height:24px;border-radius:7px;background:var(--c);color:#fff;font:800 10.5px Inter;display:flex;align-items:center;justify-content:center}
+.t{font-size:13px;font-weight:800;color:#0f172a;flex:1;line-height:1.25}
+.t span{color:var(--cd);font-weight:700}
+.h .ic{width:21px;height:21px;color:var(--c);flex:0 0 auto}
+.ld{font-size:11px;font-weight:600;color:#1e293b;margin-bottom:6px;line-height:1.5}
+ul.bl{list-style:none;margin:0 0 5px;padding:0}
+ul.bl li{position:relative;padding-left:12px;font-size:10.6px;line-height:1.5;margin:2.5px 0;color:#334155}
+ul.bl li::before{content:"";position:absolute;left:1px;top:7px;width:4px;height:4px;border-radius:1px;background:var(--c)}
+ol.nl{list-style:none;counter-reset:it;margin:0 0 5px;padding:0}
+ol.nl li{position:relative;padding-left:18px;font-size:10.6px;line-height:1.5;margin:2.5px 0;counter-increment:it;color:#334155}
+ol.nl li::before{content:counter(it);position:absolute;left:0;top:3px;font:700 8.5px 'JetBrains Mono',monospace;color:var(--cd)}
+ol.nl ul.bl{margin:2px 0 3px}
+ol.nl ul.bl li{font-size:10.2px}
+.lb{font-weight:800;color:#0f172a}
+.hd{font-size:10px;font-weight:800;letter-spacing:.04em;color:var(--cd);margin:7px 0 3px}
+.v{font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;color:var(--cd);background:var(--cx);border:1px solid var(--cl);padding:0 3px;border-radius:3px;white-space:nowrap}
+.cols2{column-count:2;column-gap:20px}
+.cols2 li{break-inside:avoid}
+.fmt{font-size:10.3px;color:#64748b;font-style:italic;margin-top:4px}
+.tip{background:var(--cx);border:1px solid var(--cl);border-left:3px solid var(--c);border-radius:8px;padding:9px 12px;font-size:10.4px;color:#334155;margin:4px 0 12px;line-height:1.5}
+.tip b{color:var(--cd)}
+/* covers + dividers */
+.cover,.back,.div{min-height:1056px;overflow:hidden;--c:#3b82f6;--cd:#1d4ed8;--cl:#dbeafe;--cx:#eff6ff}
+.cbg{position:absolute;inset:0;background:linear-gradient(160deg,#f8fafc,#eff6ff 55%,#dbeafe)}
+.dv{position:absolute;inset:0;background:linear-gradient(155deg,#fff,var(--cx) 45%,var(--cl))}
+.dots{position:absolute;inset:0;background-image:radial-gradient(#3b82f6 1px,transparent 1px);background-size:22px 22px;opacity:.12}
+.glo{position:absolute;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(59,130,246,.16),rgba(59,130,246,0) 65%)}
+.glo2{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.12),rgba(139,92,246,0) 65%)}
+.cin{position:relative;height:1056px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 70px;text-align:center}
+.badge{display:inline-block;background:#dbeafe;color:#1e40af;border:1px solid #bfdbfe;border-radius:30px;padding:6px 18px;font:800 10px 'JetBrains Mono',monospace;letter-spacing:.22em}
+.wm{font:800 40px/1 Inter;letter-spacing:-.02em;color:#0f172a}
+.tg{font:600 10px 'JetBrains Mono',monospace;letter-spacing:.34em;color:#64748b;margin-top:7px;text-transform:lowercase}
+.cv-t{font:800 46px/1.05 Inter;letter-spacing:-.01em;color:#0f172a}
+.cv-bar{width:96px;height:5px;border-radius:3px;background:linear-gradient(90deg,#3b82f6,#8b5cf6);margin:16px 0 20px}
+.cv-feats{list-style:none;margin-bottom:26px}
+.cv-feats li{display:flex;align-items:center;justify-content:center;gap:8px;font-size:12.5px;font-weight:600;color:#334155;margin:7px 0}
+.cv-feats .ico{width:15px;height:15px;color:#3b82f6}
+.cv-stats{display:flex;align-items:center;gap:14px;font:700 9.5px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#64748b;border-top:1px solid #cbd5e1;padding-top:18px;flex-wrap:wrap;justify-content:center}
+.cv-stats i{width:4px;height:4px;border-radius:1px;background:#3b82f6}
+.urltag{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.18em;color:#1d4ed8}
+/* divider */
+.din{position:relative;height:1056px;padding:70px 64px;display:flex;flex-direction:column}
+.dsec{font:800 9.5px 'JetBrains Mono',monospace;letter-spacing:.34em;color:var(--cd)}
+.dtitle{font:800 41px/1.08 Inter;letter-spacing:-.02em;color:#0f172a;margin:10px 0 12px}
+.ddesc{font-size:12px;color:#475569;max-width:560px;line-height:1.65}
+.dbadge{display:inline-flex;align-self:flex-start;background:#fff;border:1px solid var(--c);color:var(--cd);border-radius:30px;padding:7px 16px;font:800 9.5px 'JetBrains Mono',monospace;letter-spacing:.14em;margin:18px 0 24px}
+.dlist{column-count:2;column-gap:30px;max-width:660px}
+.dli{display:flex;gap:9px;font-size:10.6px;font-weight:600;color:#334155;padding:5px 0;border-bottom:1px solid #cbd5e1;break-inside:avoid}
+.dli b{font:700 9.5px 'JetBrains Mono',monospace;color:var(--cd);min-width:22px}
+/* how-to */
+.h1{font:800 23px/1.15 Inter;color:#0f172a}
+.kick{font:800 8.5px 'JetBrains Mono',monospace;letter-spacing:.22em;color:#1d4ed8;margin-bottom:6px}
+.intro{font-size:11.5px;color:#334155;line-height:1.65;margin:10px 0 14px;max-width:680px}
+.steps{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:6px 0 14px}
+.step{display:flex;gap:10px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:9px;padding:9px 11px}
+.sn{width:18px;height:18px;border-radius:50%;background:#3b82f6;color:#fff;font:800 9px Inter;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:1px}
+.step p{font-size:10.4px;color:#334155;line-height:1.5}
+.flow{display:flex;align-items:center;justify-content:center;gap:10px;margin:6px 0 14px}
+.fseg{font:800 11px 'JetBrains Mono',monospace;color:#1d4ed8;border:1.5px solid #93c5fd;background:#eff6ff;border-radius:9px;padding:8px 14px}
+.far{color:#93c5fd;font-weight:800}
+.toc{border:1px solid #e2e8f0;border-radius:11px;overflow:hidden;margin-top:12px}
+.toc .row{display:flex;align-items:center;gap:11px;padding:8px 13px;border-bottom:1px solid #eef2f7;background:#fff}
+.toc .row:last-child{border-bottom:none}
+.toc .sq{width:27px;height:27px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.toc .sq .ico{width:15px;height:15px}
+.toc .nm{font-size:11.5px;font-weight:700;color:#0f172a;flex:1}
+.toc .rg{font:600 9.5px 'JetBrains Mono',monospace;color:#64748b}
+.toc .ct{font:700 9px Inter;background:#eff6ff;color:#1d4ed8;border-radius:20px;padding:2px 9px}
+/* bonus */
+.bgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:14px 0}
+.bt{border:1px solid #dbeafe;background:#fff;border-radius:10px;padding:10px 12px;display:flex;gap:10px}
+.bt .sq{width:24px;height:24px;border-radius:7px;background:linear-gradient(135deg,#3b82f6,#1d4ed8);color:#fff;font:800 11px 'JetBrains Mono',monospace;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.bt b{font-size:10.8px;color:#1e3a8a;display:block;margin-bottom:2px}
+.bt p{font-size:10px;color:#475569;line-height:1.5}
+.fin{background:linear-gradient(140deg,#eff6ff,#dbeafe);border:1px solid #bfdbfe;border-radius:14px;padding:22px 26px;text-align:center}
+.fin .big{font:800 19px Inter;color:#0f172a;margin-bottom:8px}
+.fin p{font-size:11px;color:#334155;line-height:1.65;max-width:560px;margin:0 auto 4px}
+.fin .gl{font:700 10.5px 'JetBrains Mono',monospace;color:#1d4ed8;margin-top:8px}
+/* back cover */
+.wic{width:100%;max-width:470px;background:#fff;border:1px solid #dbeafe;border-radius:14px;padding:16px 20px;margin-bottom:26px;box-shadow:0 8px 20px rgba(59,130,246,.08);text-align:left}
+.wic .lbl{font:800 8.5px 'JetBrains Mono',monospace;letter-spacing:.24em;color:#94a3b8;margin-bottom:10px;text-align:center}
+.wic .row{display:flex;align-items:center;gap:12px;padding:6.5px 0;border-bottom:1px solid #f1f5f9}
+.wic .row:last-child{border-bottom:none}
+.wic .sq{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.wic .sq .ico{width:14px;height:14px}
+.wic .nm{font-size:11.5px;font-weight:700;color:#0f172a;flex:1}
+.wic .rg{font:600 9px 'JetBrains Mono',monospace;color:#64748b;letter-spacing:.06em}
+.bk-big{font:800 24px Inter;background:linear-gradient(90deg,#1d4ed8,#6366f1,#8b5cf6);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:10px}
+.bk-sub{font-size:11px;color:#64748b;line-height:1.6;max-width:380px}
+@media screen{.page{margin:20px auto;box-shadow:0 10px 34px rgba(15,23,42,.18)}}
+@media print{body{background:#fff}.page{margin:0;box-shadow:none}.page:last-child{page-break-after:auto}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></symbol>
+<symbol id="i-links" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 9h18"/></symbol>
+<symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M10 8.5l6 3.5-6 3.5z"/></symbol>
+<symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></symbol>
+<symbol id="i-filesearch" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h5"/><path d="M14 2v4a2 2 0 002 2h4"/><circle cx="11" cy="16" r="3"/><path d="M13.2 18.2L16 21"/></symbol>
+<symbol id="i-tag" viewBox="0 0 24 24"><path d="M20.6 13.4l-7.2 7.2a2 2 0 01-2.8 0L2 12V2h10l8.6 8.6a2 2 0 010 2.8z"/><circle cx="7" cy="7" r="1.5"/></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></symbol>
+<symbol id="i-mega" viewBox="0 0 24 24"><path d="M3 10l13-6v16L3 14v-4z"/><path d="M7 12v7a2 2 0 004 0v-5"/><path d="M19 9a4.5 4.5 0 010 6"/></symbol>
+<symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 7h12l1.5 14H4.5L6 7z"/><path d="M9 10V6a3 3 0 016 0v4"/></symbol>
+<symbol id="i-cam" viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></symbol>
+<symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+<symbol id="i-news" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h6M15 8h2M7 12h10M7 16h4M13 16h4"/></symbol>
+<symbol id="i-chart" viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></symbol>
+<symbol id="i-filecheck" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M9 14.5l2 2 4-4"/></symbol>
+<symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M8.2 13l-1 8 4.8-2.5 4.8 2.5-1-8"/></symbol>
+<symbol id="i-send" viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
+<symbol id="i-clip" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><path d="M9 12h6M9 16h4"/></symbol>
+<symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h12M9 12h12M9 18h12"/><path d="M4 6h.01M4 12h.01M4 18h.01"/></symbol>
+<symbol id="i-bars" viewBox="0 0 24 24"><path d="M6 19v-5M12 19V5M18 19v-9"/><path d="M2 20h20"/></symbol>
+<symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 22h4"/><path d="M12 2a7 7 0 00-4 12.7c.7.6 1 1.5 1 2.3h6c0-.8.3-1.7 1-2.3A7 7 0 0012 2z"/></symbol>
+<symbol id="i-headset" viewBox="0 0 24 24"><path d="M4 14v-3a8 8 0 0116 0v3"/><rect x="2" y="13" width="5" height="8" rx="2"/><rect x="17" y="13" width="5" height="8" rx="2"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012 4.2 2 2 0 014 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L8 9.5a16 16 0 006 6l1.1-1.1a2 2 0 012.1-.5c.8.3 1.7.5 2.6.6A2 2 0 0122 16.9z"/></symbol>
+<symbol id="i-trend" viewBox="0 0 24 24"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></symbol>
+<symbol id="i-apple" viewBox="0 0 24 24"><path d="M12 7c-4 0-6.5 3-6.5 6.5C5.5 17.5 9 21 12 21s6.5-3.5 6.5-7.5C18.5 10 16 7 12 7z"/><path d="M12 7c0-2 1.5-3.5 3.5-3.5"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></symbol>
+<symbol id="i-calcheck" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 9h18"/><path d="M8.5 14.5l2.5 2.5 4.5-4.5"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 010 20 15.3 15.3 0 010-20z"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 11.5l2 2 4-4"/></symbol>
+<symbol id="i-dollar" viewBox="0 0 24 24"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></symbol>
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 4l1.8 6.2L20 12l-6.2 1.8L12 20l-1.8-6.2L4 12l6.2-1.8L12 4z"/><path d="M19 3l.7 1.3 1.3.7-1.3.7-.7 1.3-.7-1.3-1.3-.7 1.3-.7.7-1.3z"/></symbol>
+<symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.8-3.8a6 6 0 01-7.9 7.9l-6.9 6.9a2.1 2.1 0 01-3-3l6.9-6.9a6 6 0 017.9-7.9l-3.8 3.8z"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 24 24"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.5 9a9 9 0 0114.9-3.4L23 10"/><path d="M20.5 15a9 9 0 01-14.9 3.4L1 14"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></symbol>
+<symbol id="i-edit" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.1 2.1 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></symbol>
+<symbol id="i-brief" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><path d="M2 12h20"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></symbol>
+<symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/><path d="M1 14h6M9 8h6M17 16h6"/></symbol>
+</defs></svg>
+
+<div id="book"></div>
+
+<script>
+/* ============ brand mark · right-aligned staircase ============ */
+const GC=[[2,0],[1,1],[2,1],[0,2],[1,2],[2,2]];
+function mark(s,col,ghost){col=col||'#3b82f6';let o=`<svg width="${s}" height="${s}" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">`;
+for(let c=0;c<3;c++)for(let r=0;r<3;r++){const x=c*24,y=r*24,on=GC.some(p=>p[0]===c&&p[1]===r);
+o+=on?`<rect x="${x}" y="${y}" width="18" height="18" rx="4" fill="${col}"/>`:(ghost?'':`<rect x="${x}" y="${y}" width="18" height="18" rx="4" fill="#e8edf3"/>`)}
+return o+'</svg>'}
+const FM=mark(11);
+
+/* ============ categories ============ */
+const CATS={
+cc:{n:'01',name:'Content Creation',color:'#3b82f6',dk:'#1d4ed8',lt:'#dbeafe',xl:'#eff6ff',ic:'edit',range:'Nº 1–15',count:15,p:4,
+ desc:'Newsletters, social media, video scripts, SEO articles, email sequences, product copy, ads, press releases, and case studies — everything you need to create content that performs.'},
+bs:{n:'02',name:'Business Services',color:'#6366f1',dk:'#4f46e5',lt:'#e0e7ff',xl:'#eef2ff',ic:'brief',range:'Nº 16–25',count:10,p:13,
+ desc:'Resumes, cold outreach, proposals, meeting notes, competitor research, brand naming, customer support, and sales scripts — AI that helps you run the business.'},
+pt:{n:'03',name:'Personal Tools',color:'#f59e0b',dk:'#b45309',lt:'#fef3c7',xl:'#fffbeb',ic:'heart',range:'Nº 26–30',count:5,p:20,
+ desc:'Career coaching, meal planning, study guides, habit building, and travel planning — put AI to work on everyday life.'},
+rd:{n:'04',name:'Research & Data',color:'#10b981',dk:'#047857',lt:'#d1fae5',xl:'#ecfdf5',ic:'search',range:'Nº 31–33',count:3,p:24,
+ desc:'Trend analysis, scam detection, and grant research — use AI to gather evidence, spot red flags, and make smarter decisions.'},
+un:{n:'05',name:'Universal',color:'#8b5cf6',dk:'#6d28d9',lt:'#ede9fe',xl:'#f5f3ff',ic:'spark',range:'Nº 34–37',count:4,p:27,
+ desc:'Brainstorming, root-cause problem solving, content repurposing, and tone adjustment — four power tools that work for any project, any industry, any goal.'}};
+
+/* ============ all 37 prompts (word-for-word) ============ */
+/* block types: L lead · P para · K label-bullets · B bullets · B2 2-col bullets · H header · O ordered · O2 2-col ordered · F note
+   "!" prefix inside B items = bold label before ":"   O items: string or {x,sub:[..]|{a:[..],col:2}} */
+const PR=[
+{n:1,cat:'cc',t:"Newsletter Writer",s:"- Full Issue Generator",ic:'mail',b:[
+["L","I need you to write a newsletter issue for [NICHE/INDUSTRY] professionals."],
+["K",[["TARGET AUDIENCE","[describe your audience]"],["NEWSLETTER NAME","[your newsletter name]"],["TONE","[professional/casual/witty/educational]"]]],
+["H","Please include:"],
+["O",["Catchy subject line (under 50 characters)","Opening hook (2-3 sentences that grab attention)","Main story/article (300-400 words on [TOPIC])","3 quick news items from this week in [INDUSTRY]","Tool/resource recommendation","Closing CTA"]],
+["F","Format it ready to copy-paste into email platform."]]},
+{n:2,cat:'cc',t:"Newsletter",s:"- Curated Links Section",ic:'links',b:[
+["L","Create a \"What We're Reading\" section for my [INDUSTRY] newsletter."],
+["P","Find and summarize 5 articles/resources from this week about:"],
+["B",["[Topic 1]","[Topic 2]","[Topic 3]"]],
+["H","For each item provide:"],
+["B",["Catchy headline (rewrite the original)","2-sentence summary","Why it matters to [TARGET AUDIENCE]","Link placeholder [URL]"]],
+["F","Make it scannable and engaging."]]},
+{n:3,cat:'cc',t:"Social Media",s:"- Month of Posts",ic:'cal',b:[
+["L","Create 20 social media posts for [BUSINESS TYPE: e.g., dental practice, gym, cafe]."],
+["H","BUSINESS INFO:"],
+["B",["!Industry: [industry]","!Target audience: [audience]","!Unique selling point: [USP]","!Location: [if relevant]"]],
+["H","POST MIX:"],
+["B",["8 educational posts (tips, how-tos)","5 engagement posts (questions, polls, fill-in-blank)","4 promotional posts (services, offers)","3 behind-the-scenes/culture posts"]],
+["H","For each post provide:"],
+["O",["Caption (150 characters max for Instagram)","Suggested image description","5-10 relevant hashtags","Best time to post"]],
+["F","Format: Ready to schedule."]]},
+{n:4,cat:'cc',t:"Social Media",s:"- Single Post Variations",ic:'share',b:[
+["L","I need to announce [ANNOUNCEMENT: new service/product/hire/milestone]."],
+["P","Create 5 different versions of this announcement for:"],
+["O",["LinkedIn (professional tone, 200 words)","Instagram (casual, visual, emojis, 150 chars)","Twitter/X (punchy, 280 chars max)","Facebook (friendly, longer form, 250 words)","TikTok script (conversational, 30-second video)"]],
+["B",["!Key points to include: [list 3-5 key points]"]],
+["F","Make each platform-optimized and ready to post."]]},
+{n:5,cat:'cc',t:"YouTube Script",s:"- Full Video",ic:'play',b:[
+["L","Write a YouTube script for a [LENGTH]-minute video."],
+["K",[["VIDEO TOPIC","[your topic]"],["CHANNEL NICHE","[your niche]"],["TARGET AUDIENCE","[describe viewers]"],["VIDEO GOAL","[educate/entertain/sell/explain]"]]],
+["H","SCRIPT STRUCTURE:"],
+["O",["HOOK (0:00-0:15): Grab attention immediately","INTRO (0:15-0:45): What they'll learn, why it matters","MAIN CONTENT (split into 3-5 sections with timestamps)","EXAMPLES/STORIES (make it relatable)","CONCLUSION (recap + CTA)"]],
+["H","Include:"],
+["B",["[BRACKETS] for B-roll suggestions","Emphasis on KEY POINTS","Natural speaking rhythm (contractions, pauses)","Engagement cues (ask viewers to comment)"]],
+["F","Make it conversational, not robotic."]]},
+{n:6,cat:'cc',t:"YouTube Script",s:"- Hook Variations",ic:'zap',b:[
+["L","Create 10 different opening hooks (first 15 seconds) for a YouTube video about [TOPIC]."],
+["B",["!VIDEO PREMISE: [brief description]"]],
+["H","For each hook provide:"],
+["O",["The exact words to say","Suggested visual/B-roll","Why this hook works (psychological trigger used)"]],
+["H","HOOK TYPES TO INCLUDE:"],
+["B2",["Question hook","Shocking statement","Personal story teaser","\"Avoid this mistake\" hook","Results preview","Curiosity gap","Pattern interrupt","Controversy/debate","Before/after","Direct value proposition"]],
+["F","Make them punchy and skip-proof."]]},
+{n:7,cat:'cc',t:"SEO Blog Post",s:"- Complete Article",ic:'filesearch',b:[
+["L","Write a complete SEO blog post."],
+["K",[["TARGET KEYWORD","[your keyword]"],["SEARCH INTENT","[informational/commercial/transactional]"],["TARGET AUDIENCE","[describe readers]"],["WORD COUNT","[1500/2000/2500]"]]],
+["H","ARTICLE STRUCTURE:"],
+["O",["SEO Title (60 chars, include keyword)","Meta Description (155 chars, include keyword + CTA)","Introduction (100-150 words, hook + what they'll learn)",{x:"H2 Section 1: [topic]",sub:["2-3 H3 subsections with content"]},{x:"H2 Section 2: [topic]",sub:["2-3 H3 subsections with content"]},{x:"H2 Section 3: [topic]",sub:["2-3 H3 subsections with content"]},"Conclusion (100 words, recap + CTA)","FAQ section (5 questions answered)"]],
+["H","REQUIREMENTS:"],
+["B2",["Natural keyword placement (don't stuff)","Internal linking suggestions [brackets]","External link opportunities","Short paragraphs (2-3 sentences max)","Bullet points and numbered lists","Conversational but authoritative tone"]]]},
+{n:8,cat:'cc',t:"SEO",s:"- Meta Titles & Descriptions",ic:'tag',b:[
+["L","Create 10 variations of SEO meta titles and descriptions for:"],
+["K",[["PAGE TOPIC","[your topic]"],["TARGET KEYWORD","[keyword]"],["BUSINESS/SITE","[your business]"]]],
+["H","For each variation provide:"],
+["B",["Title (55-60 characters, include keyword)","Description (150-155 characters, include keyword + CTA)","Emotional trigger used (curiosity/urgency/benefit/social proof)"]],
+["F","Make them click-worthy while staying honest and relevant."]]},
+{n:9,cat:'cc',t:"Email Sequence",s:"- Welcome Series",ic:'layers',b:[
+["L","Create a 5-email welcome sequence for new subscribers to [BUSINESS/NEWSLETTER]."],
+["H","SUBSCRIBER INFO:"],
+["B",["!They signed up for: [lead magnet/newsletter/update]","!Target audience: [describe]","!Your offer: [product/service you'll eventually pitch]"]],
+["H","EMAIL 1 (Immediate):"],
+["B",["Subject line","Deliver promised content","Set expectations","Soft intro to you/brand"]],
+["H","EMAIL 2 (Day 2):"],
+["B",["Subject line","Valuable tip/insight","Build relationship","No selling"]],
+["H","EMAIL 3 (Day 4):"],
+["B",["Subject line","Story or case study","Show results possible","Soft mention of offer"]],
+["H","EMAIL 4 (Day 7):"],
+["B",["Subject line","Address common objection","More value","Introduce offer"]],
+["H","EMAIL 5 (Day 10):"],
+["B",["Subject line","Clear pitch","Benefits, features, CTA","Urgency or bonus"]],
+["F","For each email: Subject + 200-300 word body + CTA."]]},
+{n:10,cat:'cc',t:"Email",s:"- Single Promotional Email",ic:'mega',b:[
+["L","Write a sales email for [PRODUCT/SERVICE]."],
+["H","OFFER DETAILS:"],
+["B",["!What you're selling: [product/service]","!Price: [price]","!Target audience: [who needs this]","!Main benefit: [primary value]","!Unique angle: [what makes it different]"]],
+["H","EMAIL COMPONENTS:"],
+["O",["5 subject line options (A/B test ready)","Preview text (40-50 chars)","Opening hook (empathy or pain point)","The problem (agitate slightly)","The solution (your offer)","Benefits (3-5 bullet points)","Social proof (testimonial placeholder)","Clear CTA (what to do next)","P.S. (urgency or bonus)"]],
+["B",["!TONE: [conversational/professional/urgent/friendly]","!LENGTH: 300-400 words"]],
+["F","Make it persuasive without being pushy."]]},
+{n:11,cat:'cc',t:"Product Descriptions",s:"- E-commerce",ic:'bag',b:[
+["L","Write 5 product descriptions for [PRODUCT TYPE]."],
+["H","PRODUCT INFO:"],
+["B",["!Name: [product name]","!Category: [category]","!Key features: [list 5-7 features]","!Benefits: [list 3-5 benefits]","!Target customer: [who buys this]","!Price point: [budget/mid/premium]"]],
+["H","For EACH description provide:"],
+["O",["Headline (10 words max, benefit-focused)","Opening hook (1-2 sentences)","Feature bullets (5-7 items)","Benefit-driven paragraph (50 words)","Social proof element (how many sold, rating)","Urgency element (if applicable)","SEO keywords naturally included"]],
+["H","VARIATION STYLES:"],
+["B",["!Version 1: Professional/technical","!Version 2: Lifestyle/emotional","!Version 3: Problem/solution focused","!Version 4: Feature-heavy (for researchers)","!Version 5: Short/scannable (mobile-optimized)"]]]},
+{n:12,cat:'cc',t:"Instagram Captions",s:"- Batch Creation",ic:'cam',b:[
+["L","Create 15 Instagram captions for [BUSINESS TYPE / NICHE]."],
+["H","BUSINESS INFO:"],
+["B",["!Niche: [your niche]","!Target audience: [describe]","!Brand voice: [personality traits]","!Goals: [engagement/sales/awareness/education]"]],
+["H","CAPTION MIX:"],
+["B2",["5 educational (teach something)","5 engagement (questions, fill-in-blank, tag a friend)","3 storytelling (personal story or customer story)","2 promotional (soft sell your offer)"]],
+["H","For EACH caption include:"],
+["O",["Hook first line (grab attention in feed)","Main caption (100-150 words)","CTA (what to do: comment, share, click bio)","10-15 relevant hashtags (mix of sizes)","Suggested post type (carousel/reel/single image)"]],
+["F","Make them authentic, not salesy."]]},
+{n:13,cat:'cc',t:"Ad Copy",s:"- Facebook/Instagram Ads",ic:'target',b:[
+["L","Create Facebook/Instagram ad copy for [PRODUCT/SERVICE]."],
+["H","CAMPAIGN INFO:"],
+["B",["!Offer: [what you're selling]","!Audience: [who you're targeting]","!Campaign goal: [awareness/consideration/conversion]","!Budget level: [small/medium/large]"]],
+["P","Create 3 complete ad variations:"],
+["H","FOR EACH AD:"],
+["O",["Primary text (125 characters - what shows in feed)","Headline (40 characters)","Description (30 characters)","CTA button text","Image/video description","Targeting suggestions"]],
+["H","AD VARIATION STYLES:"],
+["B",["!Ad 1: Problem/agitate/solve","!Ad 2: Social proof/testimonial focus","!Ad 3: Direct benefit/offer focus"]],
+["F","Make them scroll-stopping and conversion-focused."]]},
+{n:14,cat:'cc',t:"Press Release",s:"- Product Launch",ic:'news',b:[
+["L","Write a press release for [COMPANY] announcing [NEWS/LAUNCH]."],
+["H","DETAILS:"],
+["B2",["!Company name: [name]","!Location: [city, state]","!News: [what you're announcing]","!Why it matters: [significance]","!Quote source: [CEO name/title]","!Launch date: [date]","!Availability: [where/how to get it]"]],
+["H","PRESS RELEASE FORMAT:"],
+["O",["Headline (compelling, under 80 chars)","Subheadline (additional context, 120 chars)","Dateline: [CITY, State, Date]","Lead paragraph (who, what, when, where, why - 50 words)","Body paragraphs (expand on the news - 200 words)","Quote from executive (60-80 words)","Company background (boilerplate - 100 words)","Call to action (where to learn more)","Media contact information"]],
+["F","Write in AP style, third person, newsworthy tone."]]},
+{n:15,cat:'cc',t:"Case Study",s:"- Customer Success Story",ic:'chart',b:[
+["L","Write a case study about [CLIENT/CUSTOMER] success with [PRODUCT/SERVICE]."],
+["H","CLIENT INFO:"],
+["B2",["!Company/Person: [name]","!Industry: [industry]","!Challenge they faced: [problem]","!Solution provided: [what you did]","!Results achieved: [specific metrics]","!Timeframe: [how long]"]],
+["H","CASE STUDY STRUCTURE:"],
+["O",["Title: How [Client] achieved [Result] using [Solution]","Executive Summary (100 words)",{x:"The Challenge (150 words)",sub:["Situation before","Pain points","What they tried before"]},{x:"The Solution (200 words)",sub:["What you provided","Implementation process","Key features used"]},{x:"The Results (150 words)",sub:["Specific metrics (X% increase, $Y saved)","Qualitative benefits","Timeline"]},"Customer Quote (50-80 words)","Key Takeaways (3-5 bullet points)"]],
+["F","Make it story-driven with data to back it up."]]},
+{n:16,cat:'bs',t:"Resume Optimization",s:"- ATS-Friendly",ic:'filecheck',b:[
+["L","Optimize this resume for [JOB TITLE] position."],
+["H","JOB DESCRIPTION:"],
+["B",["[Paste job description here]"]],
+["H","CURRENT RESUME:"],
+["B",["[Paste current resume here]"]],
+["H","OPTIMIZATION TASKS:"],
+["O",["Extract 15-20 key skills/keywords from job description","Rewrite bullet points to include these keywords naturally","Quantify achievements where possible (%, $, numbers)","Match job title format","Optimize summary/objective for this specific role","Suggest skills section improvements","Format for ATS compatibility (no tables, simple formatting)","Create \"tailoring notes\" explaining changes made"]],
+["H","Provide:"],
+["B2",["ATS Optimization Score (estimate 1-100)","Rewritten sections","Keyword match percentage","Areas still needing improvement"]]]},
+{n:17,cat:'bs',t:"Resume",s:"- Achievement Bullet Points",ic:'award',b:[
+["L","Transform these resume bullet points from task-focused to achievement-focused."],
+["H","CURRENT BULLETS:"],
+["B",["[Paste their current bullet points]"]],
+["H","JOB CONTEXT:"],
+["B",["!Role: [their job title]","!Industry: [industry]","!Key responsibilities: [list main duties]"]],
+["P","For EACH bullet point, rewrite using this formula:"],
+["B",["[Action Verb] + [What you did] + [How you did it] + [Quantifiable result]"]],
+["H","Examples:"],
+["B",["Managed social media → Grew Instagram following 312% (0 to 15K) in 6 months through daily engagement and UGC campaigns","Handled customer service → Resolved 50+ customer inquiries daily, maintaining 4.9/5 satisfaction rating and reducing response time by 40%"]],
+["F","Provide 2-3 variations per bullet so they can choose the best fit."]]},
+{n:18,cat:'bs',t:"Cold Email",s:"- B2B Outreach",ic:'send',b:[
+["L","Write a cold email sequence for [YOUR SERVICE] targeting [PROSPECT TYPE]."],
+["H","YOUR INFO:"],
+["B",["!Service: [what you offer]","!Target: [who you're reaching out to]","!Value prop: [main benefit]","!Differentiator: [why you vs. competitors]"]],
+["H","CREATE 3-EMAIL SEQUENCE:"],
+["H","EMAIL 1 (Initial outreach):"],
+["B",["Subject line (personalized, curiosity-driven)","75-100 words","Problem they likely have","Soft question or value offer","No hard pitch yet"]],
+["H","EMAIL 2 (Follow-up Day 3):"],
+["B",["Subject line (reference first email)","50-75 words","Share quick insight or tip","Build credibility","Soft CTA (reply with interest)"]],
+["H","EMAIL 3 (Follow-up Day 7):"],
+["B",["Subject line (breakup email approach)","40-60 words","Assume they're not interested","Last piece of value","Easy out (\"should I close your file?\")"]],
+["F","Keep it conversational, not salesy. Personalization placeholders: [FIRST_NAME], [COMPANY], [RECENT_ACCOMPLISHMENT]"]]},
+{n:19,cat:'bs',t:"Cold Email",s:"- Personalization Research",ic:'search',b:[
+["L","I'm about to cold email [COMPANY NAME] offering [YOUR SERVICE]."],
+["P","Research this company and help me personalize the email:"],
+["H","FIND AND SUMMARIZE:"],
+["O",["Recent company news (funding, launches, hires, expansions)","Pain points in their industry right now","Their current [relevant area: marketing, hiring, tech stack]","Decision maker: [NAME if known] - their background, recent posts","Potential trigger events (why reach out NOW)","Competitors they likely watch","Their company values/culture (from website/social)"]],
+["H","Then write:"],
+["B",["3 personalized opening lines I could use","1 relevant insight I can share","1 specific value I can offer based on their situation"]],
+["F","Make it feel researched, not generic."]]},
+{n:20,cat:'bs',t:"Business Proposal",s:"- Client Project",ic:'clip',b:[
+["L","Create a business proposal for [CLIENT] for [PROJECT]."],
+["H","PROJECT DETAILS:"],
+["B",["!Client name: [company/person]","!Project: [what they need]","!Their goals: [what they want to achieve]","!Timeline: [deadline or duration]","!Your proposed solution: [your approach]","!Investment: [your pricing]"]],
+["H","PROPOSAL STRUCTURE:"],
+["O",["Cover letter (warm, personal, 150 words)","Executive Summary (the win for them, 100 words)","Understanding of Need (show you get their problem, 150 words)","Proposed Solution (your approach, 200 words)","Scope of Work (detailed deliverables, bullet points)","Timeline (phases with dates)","Investment (pricing breakdown)","Why Us (credentials, past results, 100 words)","Next Steps (clear CTA)","Terms & Conditions (payment, revisions, etc.)"]],
+["F","Make it benefits-focused, not features-focused."]]},
+{n:21,cat:'bs',t:"Meeting Notes",s:"- Action Items Extraction",ic:'list',b:[
+["L","Summarize this meeting and extract action items."],
+["H","MEETING RECORDING/TRANSCRIPT:"],
+["B",["[Paste transcript or notes here]"]],
+["H","MEETING CONTEXT:"],
+["B",["!Topic: [meeting subject]","!Attendees: [list participants]","!Date: [date]"]],
+["H","PROVIDE:"],
+["O",["Executive Summary (3-4 sentences of key discussion points)","Decisions Made (bullet list)","Action Items (format below)","Open Questions/Parking Lot items","Next Meeting: [if scheduled]"]],
+["H","ACTION ITEM FORMAT:"],
+["B",["[ ] [Task] - Owner: [Name] - Due: [Date] - Priority: [High/Med/Low]"]],
+["F","Make action items specific and assignable."]]},
+{n:22,cat:'bs',t:"Market Research",s:"- Competitor Analysis",ic:'bars',b:[
+["L","Conduct a competitive analysis for [YOUR COMPANY/PRODUCT] in [INDUSTRY]."],
+["H","YOUR INFO:"],
+["B",["!Product/Service: [what you offer]","!Target market: [your audience]","!Current positioning: [how you position yourself]"]],
+["H","COMPETITORS TO ANALYZE:"],
+["O",["[Competitor 1]","[Competitor 2]","[Competitor 3]"]],
+["H","FOR EACH COMPETITOR PROVIDE:"],
+["O",["Products/Services offered","Pricing strategy","Target audience","Unique selling proposition","Marketing channels used","Strengths (what they do well)","Weaknesses (gaps we can exploit)","Customer reviews (common complaints)","Recent changes or news"]],
+["H","Then create:"],
+["B",["Competitive positioning matrix","Our differentiation opportunities (5 specific ways we can stand out)","Threats to watch","Opportunities to capture"]],
+["F","Be specific and actionable."]]},
+{n:23,cat:'bs',t:"Business Name Generator",s:"- Brand Naming",ic:'bulb',b:[
+["L","Generate business name ideas for [BUSINESS DESCRIPTION]."],
+["H","BUSINESS INFO:"],
+["B",["!Industry: [your industry]","!Products/Services: [what you offer]","!Target audience: [who you serve]","!Brand personality: [adjectives: modern, trustworthy, playful, etc.]","!Key values: [what you stand for]"]],
+["H","GENERATE 30 NAME IDEAS across these categories:"],
+["O",["Descriptive names (5) - clearly state what you do","Invented names (5) - made-up words, brandable","Compound names (5) - two words combined","Metaphor names (5) - symbolic, evocative","Founder names (5) - personal touch","Acronym names (5) - initials that mean something"]],
+["H","For EACH name provide:"],
+["B",["The name",".com domain availability (assume - I'll verify)","Pros (why it works)","Cons (potential issues)","Tagline suggestion"]],
+["F","Prioritize: memorable, easy to spell, not too similar to existing brands."]]},
+{n:24,cat:'bs',t:"Customer Support",s:"- Response Templates",ic:'headset',b:[
+["L","Create customer support response templates for [BUSINESS TYPE]."],
+["K",[["BUSINESS","[your business]"],["COMMON ISSUES","[list 5-10 common customer problems/questions]"]]],
+["H","Create templates for:"],
+["H","1. ORDER ISSUES"],
+["B",["Order not received","Wrong item received","Damaged product","Order cancellation request"]],
+["H","2. ACCOUNT ISSUES"],
+["B",["Password reset","Account access problems","Subscription changes","Billing questions"]],
+["H","3. PRODUCT QUESTIONS"],
+["B",["How to use [product]","Compatibility questions","Feature requests","Availability questions"]],
+["H","4. GENERAL"],
+["B",["Thank you for feedback","Escalation needed","Cannot fulfill request","Follow-up check-in"]],
+["H","For EACH template:"],
+["B",["Subject line","Greeting","Body with [PLACEHOLDER] for personalization","Solution/next steps","Closing","!Tone: [empathetic/professional/friendly]"]],
+["F","Make them helpful and human, not robotic."]]},
+{n:25,cat:'bs',t:"Sales Script",s:"- Discovery Call",ic:'phone',b:[
+["L","Create a discovery call script for selling [YOUR SERVICE/PRODUCT]."],
+["H","OFFER INFO:"],
+["B",["!Service: [what you sell]","!Price range: [your pricing]","!Ideal client: [who needs this]","!Common objections: [list 3-5]"]],
+["H","SCRIPT STRUCTURE:"],
+["O",["Opening (build rapport, 2 min)","Set agenda (what we'll cover, 1 min)","Discovery questions (10-15 questions, 15 min)","Present solution (based on their answers, 10 min)","Address objections (handle pushback, 5 min)","Close (ask for the sale, 3 min)","Next steps (if yes or no, 2 min)"]],
+["H","For DISCOVERY QUESTIONS include:"],
+["B",["Open-ended questions about their situation","Pain point questions","Budget qualification","Decision-making process","Timeline questions","Success criteria"]],
+["H","Include:"],
+["B",["Transition phrases between sections","Objection handling scripts","Closing questions"]],
+["F","Make it conversational, not rigid."]]},
+{n:26,cat:'pt',t:"Career Coaching",s:"- Skills Gap Analysis",ic:'brief',b:[
+["L","Help [CLIENT NAME] identify skills needed for [TARGET ROLE]."],
+["H","CURRENT SITUATION:"],
+["B",["!Current role: [their current job]","!Target role: [where they want to be]","!Years of experience: [number]","!Industry: [current industry]","!Desired industry: [target industry if different]"]],
+["H","ANALYZE:"],
+["O",["Research [TARGET ROLE] requirements","List required skills (technical + soft skills)","Compare to their current skills","Identify gaps"]],
+["H","PROVIDE:"],
+["O",["Skills Match Matrix (have/don't have)","Priority Skills (must-have vs. nice-to-have)",{x:"90-Day Learning Plan:",sub:["Month 1: [skills to develop + resources]","Month 2: [skills to develop + resources]","Month 3: [skills to develop + resources]"]},"Recommended certifications or courses","Portfolio projects to build these skills","Networking strategy for this role"]],
+["F","Make the plan specific and actionable."]]},
+{n:27,cat:'pt',t:"Meal Planning",s:"- Weekly Menu",ic:'apple',b:[
+["L","Create a 7-day meal plan."],
+["H","DIETARY INFO:"],
+["B2",["!Diet type: [omnivore/vegetarian/vegan/keto/paleo/etc.]","!Allergies: [list any]","!Dislikes: [foods to avoid]","!Servings: [number of people]","!Cooking skill: [beginner/intermediate/advanced]","!Time available: [quick meals or can spend time]","!Goals: [weight loss/muscle gain/maintenance/health]"]],
+["H","FOR EACH DAY PROVIDE:"],
+["B",["Breakfast (with calories and macros)","Lunch (with calories and macros)","Dinner (with calories and macros)","2 snacks","Total daily: calories, protein, carbs, fats"]],
+["H","ALSO INCLUDE:"],
+["O",["Grocery shopping list (organized by store section)","Meal prep Sunday guide (what to prep ahead)","Quick substitutions (if missing an ingredient)","Leftover plan (minimize waste)"]],
+["B",["!Daily calorie target: [if specified]","!Macro split: [if specified]"]]]},
+{n:28,cat:'pt',t:"Study Guide",s:"- Topic Breakdown",ic:'book',b:[
+["L","Create a study guide for [SUBJECT/TOPIC]."],
+["K",[["SUBJECT","[what they're studying]"],["EXAM DATE","[if applicable]"],["CURRENT KNOWLEDGE","[beginner/intermediate/advanced]"],["STUDY TIME AVAILABLE","[hours per week]"]]],
+["H","CREATE:"],
+["O",["Topic Breakdown (main topics and subtopics)","Study Schedule (week-by-week plan until exam)","Key Concepts to Master (priority order)","Practice Questions (20 questions with answers)","Memory Techniques (mnemonics for complex info)","Study Methods (best approach for this subject)","Resources (books, videos, websites)","Self-Assessment Checklist"]],
+["H","For each main topic:"],
+["B2",["Learning objectives","Estimated study time","Difficulty level","Connection to other topics"]],
+["F","Make it comprehensive yet manageable."]]},
+{n:29,cat:'pt',t:"Habit Formation",s:"- 30-Day Challenge",ic:'calcheck',b:[
+["L","Design a 30-day habit-building challenge for [HABIT]."],
+["B2",["!HABIT: [what they want to build]","!WHY: [their motivation]","!CURRENT SITUATION: [starting point]","!OBSTACLES: [what might get in the way]"]],
+["H","CREATE:"],
+["O",["Habit Stacking (link to existing habit)",{x:"30-Day Progressive Plan:",sub:["Week 1: [mini version of habit]","Week 2: [slight increase]","Week 3: [full habit]","Week 4: [solidify]"]},"Daily Checklist/Tracker","Trigger Design (what reminds them)","Reward System (celebrate wins)","Obstacle Solutions (if-then plans)","Accountability Method","Relapse Recovery Plan"]],
+["H","For EACH DAY provide:"],
+["B2",["The specific action","Time commitment","Difficulty (easy/medium/hard)","Motivational reminder"]],
+["F","Make it start ridiculously easy to ensure early wins."]]},
+{n:30,cat:'pt',t:"Travel Itinerary",s:"- Trip Planning",ic:'globe',b:[
+["L","Plan a complete travel itinerary for [DESTINATION]."],
+["H","TRIP DETAILS:"],
+["B2",["!Destination: [city/country]","!Duration: [number of days]","!Travel dates: [dates if known]","!Travelers: [solo/couple/family/group]","!Budget: [budget/mid-range/luxury]","!Interests: [food/history/nature/adventure/culture/shopping]","!Pace: [relaxed/moderate/packed]"]],
+["H","FOR EACH DAY CREATE:"],
+["B2",["Morning activity (with address, hours, cost)","Lunch spot (with reservation tips)","Afternoon activity","Dinner recommendation","Evening option","Getting around (transport between spots)","Time estimates","Backup options (if weather bad)"]],
+["H","ALSO INCLUDE:"],
+["O",["Pre-trip prep (visa, vaccinations, packing list)","Where to stay (area recommendations)","Money tips (budget breakdown)","Safety considerations","Local customs/etiquette","Essential phrases (if language barrier)","Hidden gems (off-beaten-path spots)","Food must-tries"]],
+["F","Make it balanced - not too rushed."]]},
+{n:31,cat:'rd',t:"Trend Analysis",s:"- Industry Monitoring",ic:'trend',b:[
+["L","Analyze current trends in [INDUSTRY] for [TIME PERIOD]."],
+["K",[["INDUSTRY","[specific industry]"],["FOCUS AREAS","[what aspects to track]"],["AUDIENCE","[who will read this]"]]],
+["H","RESEARCH AND REPORT:"],
+["O2",["Emerging Trends (5-7 trends with evidence)","Declining Trends (what's fading)","Technologies Impacting Industry","Regulatory Changes (if applicable)","Consumer Behavior Shifts","Competitive Landscape Changes","Investment/Funding Activity","Predictions for Next 12 Months"]],
+["H","For EACH TREND provide:"],
+["B2",["What it is (clear explanation)","Why it matters (impact)","Who's leading (companies/people driving it)","Timeline (when will it peak)","Opportunity rating (1-10)","Threat level (1-10)","Action items (what to do about it)"]],
+["F","Include data points and specific examples."]]},
+{n:32,cat:'rd',t:"Scam Detection",s:"- Offer Analysis",ic:'shield',b:[
+["L","Analyze this [INVESTMENT/OFFER/OPPORTUNITY] for legitimacy and red flags."],
+["H","OFFER DETAILS:"],
+["B",["[Paste offer information, sales page, pitch, etc.]"]],
+["H","COMPANY/PERSON BEHIND IT:"],
+["B",["[Name, background if known]"]],
+["H","ANALYZE:"],
+["O",[{x:"Business Model Analysis",sub:["How do they make money?","Is it sustainable?","Who pays whom?"]},{x:"Claims Verification",sub:["What specific claims are made?","Are they realistic?","Any proof provided?"]},{x:"Red Flag Checklist (check for):",sub:{a:["Guaranteed returns","Pressure tactics","Unclear fee structure","Too good to be true promises","Unverifiable testimonials","Complex compensation plans","Limited-time pressure","Request for upfront payment"],col:2}},{x:"Legitimacy Check",sub:{a:["Company registration status","Better Business Bureau rating","Online reviews (patterns in complaints)","Social media presence authenticity","Leadership background"],col:2}},"Risk Assessment (1-10 scale)","Recommendation (avoid/proceed with caution/seems legit)"]],
+["F","Be objective and thorough."]]},
+{n:33,cat:'rd',t:"Grant Research",s:"- Opportunity Finder",ic:'dollar',b:[
+["L","Find grant opportunities for [ORGANIZATION/PROJECT]."],
+["H","ORGANIZATION:"],
+["B",["!Type: [nonprofit/research/small business/etc.]","!Mission: [what you do]","!Location: [city, state]","!Annual budget: [size]"]],
+["H","PROJECT SEEKING FUNDING:"],
+["B",["!Description: [what needs funding]","!Budget needed: [amount]","!Timeline: [when needed]","!Impact: [who/what benefits]"]],
+["H","RESEARCH:"],
+["O",["Federal Grants (list 5-10 with eligibility)","State/Local Grants (list 5-10)","Private Foundations (list 10-15)","Corporate Giving Programs (list 5-10)"]],
+["H","FOR EACH GRANT PROVIDE:"],
+["B2",["Grant name and funder","Funding amount (range)","Eligibility criteria","Deadline","Competition level (low/med/high)","Match percentage (fit to our project: %)","Application requirements","Success tips"]],
+["F","Prioritize by likelihood of success + funding amount."]]},
+{n:34,cat:'un',t:"Brainstorming",s:"- Idea Generator",ic:'spark',b:[
+["L","I need creative ideas for [TOPIC/PROBLEM]."],
+["H","CONTEXT:"],
+["B",["!What I'm working on: [describe]","!Goal: [what success looks like]","!Constraints: [limitations - budget, time, resources]","!Target audience: [who it's for]"]],
+["P","Generate 20 ideas using these thinking methods:"],
+["B",["5 conventional ideas (tried and tested)","5 unconventional ideas (outside the box)","5 combination ideas (merge existing concepts)","5 opposite ideas (reverse assumptions)"]],
+["H","For each idea provide:"],
+["B",["The core concept (one sentence)","Why it could work","Potential obstacles","Difficulty to implement (1-10)","Potential impact (1-10)"]],
+["F","Then rank all 20 by: Impact × Feasibility."]]},
+{n:35,cat:'un',t:"Problem Solving",s:"- Root Cause Analysis",ic:'tool',b:[
+["L","Help me solve this problem: [DESCRIBE PROBLEM]"],
+["H","PROBLEM DETAILS:"],
+["B",["!What's happening: [symptoms]","!When it started: [timeline]","!Who's affected: [people/dept/customers]","!What we've tried: [past solutions]","!Current impact: [cost/time/quality]"]],
+["H","ANALYZE USING 5 WHYS:"],
+["B",["!Problem: [state it]","!Why? [first reason]","!Why? [dig deeper]","!Why? [deeper still]","!Why? [keep going]","!Root cause: [the real issue]"]],
+["H","Then provide:"],
+["O",["Root Cause Summary","3 Potential Solutions (short/med/long term)",{x:"For each solution:",sub:["Implementation steps","Resources needed","Timeline","Risks","Expected outcome"]},"Recommended approach (which solution and why)"]],
+["F","Be systematic and thorough."]]},
+{n:36,cat:'un',t:"Content Repurposing",s:"- Multi-Platform",ic:'refresh',b:[
+["L","Repurpose this [CONTENT TYPE] into multiple formats."],
+["H","ORIGINAL CONTENT:"],
+["B",["[Paste your content: blog post, video script, podcast episode, etc.]"]],
+["K",[["ORIGINAL FORMAT","[what it is now]"],["TARGET AUDIENCE","[who it's for]"]]],
+["H","REPURPOSE INTO:"],
+["O",["Twitter thread (10 tweets)","LinkedIn post (1500 words)","Instagram carousel (8 slides with text)","TikTok/Reel script (60 seconds)","Email newsletter section (300 words)","Infographic outline (key data points)","Podcast talking points (5 main points)","Quote graphics (5 pull quotes)"]],
+["H","For each format:"],
+["B2",["Adapt tone for platform","Include engagement hooks","Optimize for platform algorithm","Add relevant hashtags/keywords"]],
+["F","Make each piece standalone while maintaining core message."]]},
+{n:37,cat:'un',t:"Tone Adjustment",s:"- Rewrite Content",ic:'chat',b:[
+["L","Rewrite this content in different tones."],
+["H","ORIGINAL TEXT:"],
+["B",["[Paste your content]"]],
+["H","REWRITE IN THESE TONES:"],
+["O2",["Professional/Corporate","Casual/Conversational","Witty/Humorous","Authoritative/Expert","Empathetic/Warm","Urgent/Action-oriented"]],
+["H","For each version:"],
+["B",["Maintain core message","Adjust vocabulary","Change sentence structure","Modify examples if needed","Keep same length (approximately)"]],
+["F","Show me which tone works best for [YOUR AUDIENCE/GOAL]."]]}
+];
+
+/* ============ render helpers ============ */
+const hl=s=>String(s).replace(/\[([^\]]+)\]/g,'<b class="v">[$1]</b>');
+function bull(a){return '<ul class="bl">'+a.map(it=>{const s=String(it);
+ if(s[0]==='!'){const i=s.indexOf(':');return `<li><span class="lb">${s.slice(1,i)}:</span> ${hl(s.slice(i+1))}</li>`}
+ return '<li>'+hl(s)+'</li>'}).join('')+'</ul>'}
+function kv(a){return '<ul class="bl">'+a.map(r=>`<li><span class="lb">${r[0]}:</span> ${hl(r[1])}</li>`).join('')+'</ul>'}
+function ord(a){return '<ol class="nl">'+a.map(it=>{
+ if(typeof it==='string')return '<li>'+hl(it)+'</li>';
+ let sub='';if(it.sub){const col=it.sub.col;const items=Array.isArray(it.sub)?it.sub:it.sub.a;
+  sub=`<ul class="bl${col?' cols2':''}">${items.map(s=>'<li>'+hl(s)+'</li>').join('')}</ul>`}
+ return `<li>${hl(it.x)}${sub}</li>`}).join('')+'</ol>'}
+function blocks(arr){return arr.map(bl=>{switch(bl[0]){
+ case 'L':return '<p class="ld">'+hl(bl[1])+'</p>';
+ case 'P':return '<p class="ld" style="font-weight:400">'+hl(bl[1])+'</p>';
+ case 'K':return kv(bl[1]);
+ case 'B':return bull(bl[1]);
+ case 'B2':return '<div class="cols2" style="margin-bottom:5px">'+bull(bl[1])+'</div>';
+ case 'H':return `<div class="hd">${bl[1]}</div>`;
+ case 'O':return ord(bl[1]);
+ case 'O2':return '<div class="cols2" style="margin-bottom:5px">'+ord(bl[1]).replace('<ol class="nl">','<ol class="nl cols2">')+'</div>';
+ case 'F':return `<p class="fmt">${bl[1]}</p>`}}).join('')}
+function card(p){return `<div class="p"><div class="h"><div class="n">${p.n}</div><div class="t">${p.t} <span>${p.s}</span></div><svg class="ic ico"><use href="#i-${p.ic}"/></svg></div>${blocks(p.b)}</div>`}
+
+/* ============ page templates ============ */
+let TOTAL=30; // recomputed from PLAN.length below, before rendering
+const foot=no=>`<div class="pf"><span class="fbrand">${FM} aiopentec · aiopentec.github.io</span><span class="no">${no} / ${TOTAL}</span></div>`;
+const pad=n=>(n<10?'0':'')+n;
+
+function coverPg(){return `<div class="page cover"><div class="cbg"></div><div class="dots"></div>
+<div class="glo" style="left:-240px;top:-220px"></div><div class="glo2" style="right:-200px;bottom:-220px"></div>
+<div class="cin">
+ <div class="badge">37 COPY-PASTE PROMPTS</div>
+ <div style="margin:24px 0 10px">${mark(96)}</div>
+ <div class="wm">aiopentec</div><div class="tg">quiet product machines</div>
+ <h1 class="cv-t" style="margin-top:26px">AI Prompts Library</h1>
+ <div class="cv-bar"></div>
+ <ul class="cv-feats">
+  <li><svg class="ico"><use href="#i-check"/></svg>Get Better Results from ChatGPT &amp; Claude</li>
+  <li><svg class="ico"><use href="#i-check"/></svg>Ready-to-Use Prompts for Every Business</li>
+  <li><svg class="ico"><use href="#i-check"/></svg>Just Copy, Customize, and Execute</li>
+ </ul>
+ <div class="cv-stats"><span>37 PROFESSIONAL AI PROMPTS</span><i></i><span>5 CATEGORIES</span><i></i><span>CHATGPT · CLAUDE · ANY AI ASSISTANT</span></div>
+ <div class="urltag" style="margin-top:30px">AIOPENTEC.GITHUB.IO · FREE · NO SIGN-UP</div>
+</div></div>`}
+
+function howtoPg(pgno){const rows=Object.keys(CATS).map(k=>{const c=CATS[k];
+ return `<div class="row"><div class="sq" style="background:${c.xl}"><svg class="ico" style="color:${c.color}"><use href="#i-${c.ic}"/></svg></div><div class="nm">${c.name} Prompts</div><div class="rg">${c.range}</div><div class="ct">${c.count} prompts</div><div class="rg">p. ${c.p}</div></div>`}).join('');
+ return `<div class="page pg"><div class="rh"><span class="b">AI PROMPTS LIBRARY</span><span class="cat"><i></i>GETTING STARTED</span></div>
+ <div class="kick">WELCOME</div><div class="h1">How to Use This Library</div>
+ <p class="intro">This library contains 37 professional AI prompts organized by business category. Each prompt is designed to give you the best possible results from ChatGPT, Claude, or any AI assistant.</p>
+ <div class="kick" style="letter-spacing:.2em;color:#64748b">USING THE PROMPTS:</div>
+ <div class="steps">
+  <div class="step"><div class="sn">1</div><p>Find the prompt category that matches your need</p></div>
+  <div class="step"><div class="sn">2</div><p>Copy the entire prompt text</p></div>
+  <div class="step"><div class="sn">3</div><p>Replace <b class="v">[BRACKETED]</b> sections with your specific information</p></div>
+  <div class="step"><div class="sn">4</div><p>Paste into ChatGPT or Claude</p></div>
+  <div class="step"><div class="sn">5</div><p>Review and refine the output</p></div>
+  <div class="step"><div class="sn">6</div><p>Save successful variations for future use</p></div>
+ </div>
+ <div class="flow"><span class="fseg"><svg class="ico" style="width:12px;height:12px;vertical-align:-2px"><use href="#i-copy"/></svg> COPY</span><span class="far">→</span><span class="fseg"><svg class="ico" style="width:12px;height:12px;vertical-align:-2px"><use href="#i-sliders"/></svg> CUSTOMIZE</span><span class="far">→</span><span class="fseg"><svg class="ico" style="width:12px;height:12px;vertical-align:-2px"><use href="#i-zap"/></svg> EXECUTE</span></div>
+ <div class="tip"><b>■ Pro Tip:</b> The more specific you are when filling in the <b class="v">[BRACKETED]</b> sections, the better your results will be. Include context, examples, and desired outcomes.</div>
+ <div class="kick" style="letter-spacing:.2em;color:#64748b">THE LIBRARY AT A GLANCE</div>
+ <div class="toc">${rows}</div>
+ ${foot(pad(pgno))}</div>`}
+
+function divPg(k,no){const c=CATS[k];
+ const list=PR.filter(p=>p.cat===k).map(p=>`<div class="dli"><b>${pad(p.n)}</b><span>${p.t} ${p.s}</span></div>`).join('');
+ return `<div class="page div s-${k}"><div class="dv"></div>
+ <div style="position:absolute;right:-50px;bottom:-50px;opacity:.07">${mark(380,c.color,true)}</div>
+ <div class="din">
+  <div style="display:flex;justify-content:space-between;align-items:center">${mark(40,c.color)}<span class="badge" style="background:#fff;border-color:${c.lt};color:${c.dk}">AI PROMPTS LIBRARY</span></div>
+  <div class="dsec" style="margin-top:34px">SECTION ${c.n}</div>
+  <div class="dtitle">${c.name}<br>Prompts</div>
+  <p class="ddesc">${c.desc}</p>
+  <div class="dbadge">${c.count} PROMPTS · ${c.range.toUpperCase()}</div>
+  <div class="dlist">${list}</div>
+  <div style="margin-top:auto"></div>
+ </div>
+ ${foot(pad(no))}</div>`}
+
+function ppPg(k,list,tip,no){const c=CATS[k];
+ return `<div class="page pg s-${k}"><div class="rh"><span class="b">AI PROMPTS LIBRARY</span><span class="cat"><i></i>${c.name.toUpperCase()}</span></div>
+ ${list.map(i=>card(PR[i])).join('')}
+ ${tip?`<div class="tip"><b>■ Power Tip:</b> ${tip}</div>`:''}
+ ${foot(pad(no))}</div>`}
+
+function bonusPg(pgno){
+ const TIPS=[["Be Specific","Instead of \"write a blog post,\" say \"write a 1500-word SEO blog post about email marketing for small businesses in conversational tone.\""],["Provide Context","Give the AI background information about your audience, goals, and constraints."],["Use Examples","Show the AI examples of what you want (or don't want)."],["Iterate","If first result isn't perfect, ask AI to refine specific sections."],["Save What Works","Keep a swipe file of your best-performing prompts."],["Combine Prompts","Use multiple prompts in sequence for complex projects."],["Set Constraints","Specify word count, tone, format, and structure clearly."],["Ask for Variations","Request 3-5 options so you can choose the best one."]];
+ return `<div class="page pg"><div class="rh"><span class="b">AI PROMPTS LIBRARY</span><span class="cat"><i></i>BONUS TIPS</span></div>
+ <div class="kick">LEVEL UP</div><div class="h1">Bonus Tips for Better AI Results</div>
+ <div class="bgrid">${TIPS.map((t,i)=>`<div class="bt"><div class="sq">${i+1}</div><div><b>${t[0]}</b><p>${t[1]}</p></div></div>`).join('')}</div>
+ <div class="fin"><div class="big">Ready to 10X your AI results?</div>
+ <p>Start with the prompts that match your immediate needs. Customize them for your situation. Track what works best. Soon you'll develop your own prompt-writing skills.</p>
+ <div class="gl">Good luck! ■</div></div>
+ ${foot(pad(pgno))}</div>`}
+
+function backPg(){const rows=Object.keys(CATS).map(k=>{const c=CATS[k];
+ return `<div class="row"><div class="sq" style="background:${c.xl}"><svg class="ico" style="color:${c.color}"><use href="#i-${c.ic}"/></svg></div><div class="nm">${c.name} Prompts</div><div class="rg">${c.range}</div></div>`}).join('');
+ return `<div class="page back"><div class="cbg"></div><div class="dots"></div>
+ <div class="glo" style="right:-220px;top:-200px"></div><div class="glo2" style="left:-200px;bottom:-220px"></div>
+ <div class="cin">
+  <div style="margin-bottom:14px">${mark(88)}</div>
+  <div class="wm" style="font-size:30px">aiopentec</div><div class="tg">quiet product machines</div>
+  <div class="badge" style="margin-top:20px">30+ COPY-PASTE PROMPTS</div>
+  <div class="wic"><div class="lbl">WHAT'S INSIDE</div>${rows}</div>
+  <div class="bk-big">Copy. Customize. Execute.</div>
+  <p class="bk-sub">Ready to 10X your AI results? Just copy, customize, and execute — better outputs from ChatGPT &amp; Claude start here.</p>
+  <div class="urltag" style="margin-top:24px">AIOPENTEC.GITHUB.IO</div>
+  <div class="cv-stats" style="margin-top:26px"><span>GET BETTER RESULTS FROM CHATGPT &amp; CLAUDE</span><i></i><span>READY-TO-USE PROMPTS FOR EVERY BUSINESS</span></div>
+ </div></div>`}
+
+/* ============ assemble 30 pages ============ */
+const PLAN=[
+{f:coverPg},{f:howtoPg},
+{d:'cc'},
+{pp:'cc',list:[0,1]},
+{pp:'cc',list:[2,3],tip:"Give the AI 2–3 real example posts you love — it will match your voice far better than any adjective can."},
+{pp:'cc',list:[4,5]},{pp:'cc',list:[6,7]},
+{pp:'cc',list:[8],tip:"Paste the full prompt once, then simply reply \u201CNow write Email 2\u201D — the AI keeps all the context and you avoid re-explaining the setup."},
+{pp:'cc',list:[9,10]},{pp:'cc',list:[11,12]},{pp:'cc',list:[13,14]},
+{d:'bs'},
+{pp:'bs',list:[15,16]},{pp:'bs',list:[17,18]},{pp:'bs',list:[19,20]},{pp:'bs',list:[21]},
+{pp:'bs',list:[22]},
+{pp:'bs',list:[23],tip:"Add your actual refund policy and tone guidelines — support templates only sound human when the AI knows your real constraints."},
+{pp:'bs',list:[24],tip:"Rehearse the discovery questions out loud. If any question feels awkward to ask, rewrite it in the prompt before your next call."},
+{d:'pt'},
+{pp:'pt',list:[25,26]},{pp:'pt',list:[27,28]},
+{pp:'pt',list:[29],tip:"Include your real travel dates and a rough daily budget — itineraries improve dramatically when the AI has actual constraints to plan around."},
+{d:'rd'},
+{pp:'rd',list:[30,31]},
+{pp:'rd',list:[32],tip:"Before writing any application, ask the AI to score each grant for \u201Cfit\u201D — pursue the top three matches first to avoid dead-end applications."},
+{d:'un'},
+{pp:'un',list:[33,34]},{pp:'un',list:[35,36]},
+{f:bonusPg},{f:backPg}];
+
+try{
+ TOTAL=PLAN.length;
+ // derive each category's first-content page number directly from PLAN,
+ // instead of hand-maintaining it, so inserting/removing pages can't desync the TOC.
+ {let n=0;PLAN.forEach(step=>{n++;if(step.pp&&!CATS[step.pp]._pset){CATS[step.pp].p=n;CATS[step.pp]._pset=true;}});}
+ let pgno=0,out='';
+ PLAN.forEach(step=>{pgno++;
+  if(step.f)out+=step.f(pgno);
+  else if(step.d)out+=divPg(step.d,pgno);
+  else out+=ppPg(step.pp,step.list,step.tip,pgno)});
+ document.getElementById('book').innerHTML=out;
+}catch(err){
+ document.getElementById('book').innerHTML=
+  '<div style="padding:40px;font-family:monospace;color:#b91c1c;font-size:14px">RENDER ERROR: '+err.message+'</div>';
+}
+</script>
+</body>
+</html>
