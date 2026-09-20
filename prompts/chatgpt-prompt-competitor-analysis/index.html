@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Market Research - Competitor Analysis — Free ChatGPT &amp; Claude Prompt | aiopentec</title>
+<meta name="description" content="Runs a structured teardown of up to three competitors — pricing, positioning, strengths, weaknesses, and common complaints in their reviews — then builds a p…">
+<link rel="canonical" href="https://aiopentec.github.io/prompts/chatgpt-prompt-competitor-analysis/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Market Research - Competitor Analysis — Free AI Prompt">
+<meta property="og:description" content="Runs a structured teardown of up to three competitors — pricing, positioning, strengths, weaknesses, and common complaints in their reviews — then builds a p…">
+<meta property="og:image" content="https://aiopentec.github.io/prompts/aiopentec-og-image.png">
+<meta property="og:url" content="https://aiopentec.github.io/prompts/chatgpt-prompt-competitor-analysis/">
+<meta name="twitter:card" content="summary_large_image">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/prompt-page.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Market Research - Competitor Analysis",
+  "description": "Runs a structured teardown of up to three competitors — pricing, positioning, strengths, weaknesses, and common complaints in their reviews — then builds a p…",
+  "step": [{"@type":"HowToStep","text":"Copy the entire prompt below."},{"@type":"HowToStep","text":"Replace the [BRACKETED] fields with your own details."},{"@type":"HowToStep","text":"Paste into ChatGPT, Claude, or any AI assistant."}]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"AI Prompts Library","item":"https://aiopentec.github.io/prompts/"},
+    {"@type":"ListItem","position":2,"name":"Browse all prompts","item":"https://aiopentec.github.io/prompts/browse/"},
+    {"@type":"ListItem","position":3,"name":"Market Research - Competitor Analysis","item":"https://aiopentec.github.io/prompts/chatgpt-prompt-competitor-analysis/"}
+  ]
+}
+</script>
+<script data-goatcounter="https://aiopentec.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body data-slug="chatgpt-prompt-competitor-analysis">
+
+<nav><div class="navin">
+  <a class="wm" href="../"><div class="logo"><div style="background:#e2e8f0"></div><div style="background:#e2e8f0"></div><div style="background:#3b82f6"></div><div style="background:#e2e8f0"></div><div style="background:#3b82f6"></div><div style="background:#3b82f6"></div><div style="background:#3b82f6"></div><div style="background:#3b82f6"></div><div style="background:#3b82f6"></div></div>aiopentec</a>
+  <a class="navback" href="../browse/">← All 37 prompts</a>
+</div></nav>
+
+<div class="wrap">
+  <div class="crumb">
+    <a href="../">AI Prompts Library</a><span class="sep">/</span>
+    <a href="../browse/">Browse</a><span class="sep">/</span>
+    <span class="catchip" style="background:#e0e7ff;color:#4f46e5"><i style="background:#6366f1"></i>Business Services</span>
+  </div>
+
+  <h1>Market Research</h1>
+  <div class="subtitle">Competitor Analysis</div>
+  <p class="lede">Runs a structured teardown of up to three competitors — pricing, positioning, strengths, weaknesses, and common complaints in their reviews — then builds a positioning matrix and five concrete ways to differentiate.</p>
+  <p class="who"><b>Best for:</b> Founders and marketers doing market research who want a repeatable framework instead of an ad hoc competitor doc.</p>
+
+  <div class="promptcard">
+    <div class="pchead">
+      <span class="lbl">PROMPT Nº 22 OF 37</span>
+      <button class="copybtn" onclick="copyPrompt(this,'TWFya2V0IFJlc2VhcmNoIC0gQ29tcGV0aXRvciBBbmFseXNpcwoKQ29uZHVjdCBhIGNvbXBldGl0aXZlIGFuYWx5c2lzIGZvciBbWU9VUiBDT01QQU5ZL1BST0RVQ1RdIGluIFtJTkRVU1RSWV0uCgpZT1VSIElORk86Ci0gUHJvZHVjdC9TZXJ2aWNlOiBbd2hhdCB5b3Ugb2ZmZXJdCi0gVGFyZ2V0IG1hcmtldDogW3lvdXIgYXVkaWVuY2VdCi0gQ3VycmVudCBwb3NpdGlvbmluZzogW2hvdyB5b3UgcG9zaXRpb24geW91cnNlbGZdCgpDT01QRVRJVE9SUyBUTyBBTkFMWVpFOgoxLiBbQ29tcGV0aXRvciAxXQoyLiBbQ29tcGV0aXRvciAyXQozLiBbQ29tcGV0aXRvciAzXQoKRk9SIEVBQ0ggQ09NUEVUSVRPUiBQUk9WSURFOgoxLiBQcm9kdWN0cy9TZXJ2aWNlcyBvZmZlcmVkCjIuIFByaWNpbmcgc3RyYXRlZ3kKMy4gVGFyZ2V0IGF1ZGllbmNlCjQuIFVuaXF1ZSBzZWxsaW5nIHByb3Bvc2l0aW9uCjUuIE1hcmtldGluZyBjaGFubmVscyB1c2VkCjYuIFN0cmVuZ3RocyAod2hhdCB0aGV5IGRvIHdlbGwpCjcuIFdlYWtuZXNzZXMgKGdhcHMgd2UgY2FuIGV4cGxvaXQpCjguIEN1c3RvbWVyIHJldmlld3MgKGNvbW1vbiBjb21wbGFpbnRzKQo5LiBSZWNlbnQgY2hhbmdlcyBvciBuZXdzCgpUaGVuIGNyZWF0ZToKLSBDb21wZXRpdGl2ZSBwb3NpdGlvbmluZyBtYXRyaXgKLSBPdXIgZGlmZmVyZW50aWF0aW9uIG9wcG9ydHVuaXRpZXMgKDUgc3BlY2lmaWMgd2F5cyB3ZSBjYW4gc3RhbmQgb3V0KQotIFRocmVhdHMgdG8gd2F0Y2gKLSBPcHBvcnR1bml0aWVzIHRvIGNhcHR1cmUKCkJlIHNwZWNpZmljIGFuZCBhY3Rpb25hYmxlLg==')">📋 COPY PROMPT</button>
+    </div>
+    <div class="pbody"><p class="ld">Conduct a competitive analysis for <span class="v">[YOUR COMPANY/PRODUCT]</span> in <span class="v">[INDUSTRY]</span>.</p><div class="hd">YOUR INFO:</div><ul><li><span class="lb">Product/Service:</span>  <span class="v">[what you offer]</span></li><li><span class="lb">Target market:</span>  <span class="v">[your audience]</span></li><li><span class="lb">Current positioning:</span>  <span class="v">[how you position yourself]</span></li></ul><div class="hd">COMPETITORS TO ANALYZE:</div><ol><li><span class="v">[Competitor 1]</span></li><li><span class="v">[Competitor 2]</span></li><li><span class="v">[Competitor 3]</span></li></ol><div class="hd">FOR EACH COMPETITOR PROVIDE:</div><ol><li>Products/Services offered</li><li>Pricing strategy</li><li>Target audience</li><li>Unique selling proposition</li><li>Marketing channels used</li><li>Strengths (what they do well)</li><li>Weaknesses (gaps we can exploit)</li><li>Customer reviews (common complaints)</li><li>Recent changes or news</li></ol><div class="hd">Then create:</div><ul><li>Competitive positioning matrix</li><li>Our differentiation opportunities (5 specific ways we can stand out)</li><li>Threats to watch</li><li>Opportunities to capture</li></ul><p class="fmt">Be specific and actionable.</p></div>
+  </div>
+
+  <div class="cta">
+    <div class="big">Want all 37 prompts?</div>
+    <p>This one's from the free AI Prompts Library — 37 tested, copy-paste prompts for ChatGPT &amp; Claude across 5 categories, plus 8 bonus tips for better output. No sign-up.</p>
+    <a class="btn" href="../ai-prompts-library.pdf" onclick="if(window.goatcounter)goatcounter.count({path:'/pdf-download'})">↓ DOWNLOAD THE FREE PDF</a>
+    <div class="stats">37 PROMPTS · 5 CATEGORIES · $0 FOREVER</div>
+  </div>
+
+  <div class="related">
+    <div class="kick">MORE BUSINESS SERVICES PROMPTS</div>
+    <div class="relgrid"><a class="relcard" href="../chatgpt-prompt-business-name-generator/"><div class="rn">Nº 23</div><div class="rt">Business Name Generator</div><div class="rs">Brand Naming</div></a><a class="relcard" href="../chatgpt-prompt-customer-support-templates/"><div class="rn">Nº 24</div><div class="rt">Customer Support</div><div class="rs">Response Templates</div></a><a class="relcard" href="../chatgpt-prompt-sales-discovery-call/"><div class="rn">Nº 25</div><div class="rt">Sales Script</div><div class="rs">Discovery Call</div></a></div>
+  </div>
+</div>
+
+<footer><div class="footin">
+  <span class="fwm"><div class="logo"><div style="background:#e2e8f0"></div><div style="background:#e2e8f0"></div><div style="background:#3b82f6"></div><div style="background:#e2e8f0"></div><div style="background:#3b82f6"></div><div style="background:#3b82f6"></div><div style="background:#3b82f6"></div><div style="background:#3b82f6"></div><div style="background:#3b82f6"></div></div>aiopentec</span>
+  <div class="footlinks">
+    <a href="../">AI Prompts Library</a>
+    <a href="../browse/">Browse all</a>
+    <a href="https://github.com/aiopentec">GitHub ↗</a>
+  </div>
+</div></footer>
+
+<script src="../assets/prompt-page.js"></script>
+</body>
+</html>

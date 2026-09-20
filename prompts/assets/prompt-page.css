@@ -1,0 +1,81 @@
+:root{--bg:#f8fafc;--surface:#fff;--line:#e2e8f0;--ink:#0f172a;--gray:#64748b;--accent:#3b82f6;--accent-dark:#1d4ed8;--accent-light:#dbeafe}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',Arial,sans-serif;line-height:1.6}
+a{color:inherit}
+.wrap{max-width:820px;margin:0 auto;padding:0 24px}
+.btn{display:inline-block;font:700 13px 'Inter';letter-spacing:.04em;color:#fff;background:var(--accent);border-radius:10px;padding:13px 22px;text-decoration:none;transition:.18s;box-shadow:0 4px 6px -1px rgba(59,130,246,0.2);border:none;cursor:pointer}
+.btn:hover{background:var(--accent-dark);transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+.btn.ghost:hover{background:var(--accent-light)}
+.btn.sm{padding:9px 14px;font-size:11.5px;border-radius:8px}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(248,250,252,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.navin{max-width:820px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:12px}
+.wm{font:800 16px 'Inter';color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:9px}
+.logo{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;width:24px;height:24px;flex:0 0 auto}
+.logo div{border-radius:2px}
+.navback{margin-left:auto;font:600 12.5px 'Inter';color:var(--gray);text-decoration:none;display:flex;align-items:center;gap:6px}
+.navback:hover{color:var(--accent-dark)}
+
+.crumb{font:600 11.5px 'JetBrains Mono',monospace;letter-spacing:.06em;color:var(--gray);margin:28px 0 14px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.crumb a{color:var(--gray);text-decoration:none}
+.crumb a:hover{color:var(--accent-dark)}
+.crumb .sep{color:#cbd5e1}
+.catchip{display:inline-flex;align-items:center;gap:6px;font:700 10.5px 'JetBrains Mono',monospace;letter-spacing:.1em;padding:4px 10px;border-radius:20px}
+.catchip i{width:6px;height:6px;border-radius:2px}
+
+h1{font:800 clamp(28px,4.5vw,40px)/1.15 'Inter';letter-spacing:-.02em;color:var(--ink);margin-bottom:4px}
+.subtitle{font:600 16px 'Inter';color:var(--accent-dark);margin-bottom:18px}
+.lede{font-size:16.5px;color:#334155;line-height:1.7;margin-bottom:8px}
+.who{font-size:14px;color:var(--gray);margin-bottom:30px}
+.who b{color:#334155}
+
+.promptcard{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px;padding:26px 26px 22px;margin:30px 0;box-shadow:0 4px 6px -1px rgba(0,0,0,.04)}
+.pchead{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;gap:12px}
+.pchead .lbl{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--gray)}
+.copybtn{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.06em;color:var(--accent-dark);background:var(--accent-light);border:1px solid #93c5fd;border-radius:8px;padding:8px 14px;cursor:pointer;white-space:nowrap}
+.copybtn:hover{background:#bfdbfe}
+.copybtn.copied{background:#dcfce7;border-color:#86efac;color:#15803d}
+
+.pbody .ld{font-size:14.5px;font-weight:600;color:#1e293b;margin-bottom:10px;line-height:1.6}
+.pbody .hd{font-size:11.5px;font-weight:800;letter-spacing:.04em;color:var(--accent-dark);margin:14px 0 6px}
+.pbody ul,.pbody ol{margin:0 0 8px;padding-left:0;list-style:none}
+.pbody ul li{position:relative;padding-left:16px;font-size:13.5px;line-height:1.65;margin:4px 0;color:#334155}
+.pbody ul li::before{content:"";position:absolute;left:2px;top:9px;width:5px;height:5px;border-radius:1px;background:var(--accent)}
+.pbody ol{counter-reset:it}
+.pbody ol li{position:relative;padding-left:22px;font-size:13.5px;line-height:1.65;margin:4px 0;counter-increment:it;color:#334155}
+.pbody ol li::before{content:counter(it);position:absolute;left:0;top:2px;font:700 11px 'JetBrains Mono',monospace;color:var(--accent-dark)}
+.pbody ol ul{margin:4px 0 6px}
+.pbody ol ul li{padding-left:16px;counter-increment:none}
+.pbody ol ul li::before{content:"";width:5px;height:5px;border-radius:1px;background:var(--accent);top:9px;left:2px;font:inherit;color:transparent}
+.pbody .lb{font-weight:800;color:var(--ink)}
+.pbody .v{font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:var(--accent-dark);background:var(--accent-light);border:1px solid #bfdbfe;padding:1px 5px;border-radius:4px;white-space:nowrap}
+.pbody .fmt{font-size:13px;color:var(--gray);font-style:italic;margin-top:6px}
+.pbody .cols2{columns:2;column-gap:22px}
+.pbody .cols2 li{break-inside:avoid}
+
+.cta{background:linear-gradient(140deg,#eff6ff,#dbeafe);border:1px solid #bfdbfe;border-radius:14px;padding:26px 28px;text-align:center;margin:36px 0}
+.cta .big{font:800 18px 'Inter';color:var(--ink);margin-bottom:8px}
+.cta p{font-size:13.5px;color:#334155;max-width:480px;margin:0 auto 16px;line-height:1.6}
+.cta .stats{font:700 10.5px 'JetBrains Mono',monospace;letter-spacing:.1em;color:var(--gray);margin-top:14px}
+
+.related{margin:36px 0 10px}
+.related .kick{font:700 10.5px 'JetBrains Mono',monospace;letter-spacing:.16em;color:var(--gray);margin-bottom:12px}
+.relgrid{display:grid;gap:10px}
+.relcard{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;text-decoration:none;transition:.15s}
+.relcard:hover{border-color:#93c5fd;transform:translateX(2px)}
+.relcard .rn{font:700 10px 'JetBrains Mono',monospace;color:var(--accent-dark)}
+.relcard .rt{font:700 14px 'Inter';color:var(--ink);margin-top:2px}
+.relcard .rs{font:400 12px 'Inter';color:var(--gray);margin-top:2px}
+
+footer{border-top:1px solid var(--line);padding:32px 0 44px;margin-top:50px}
+.footin{max-width:820px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.footin .fwm{font:800 13px 'Inter';color:var(--ink);display:flex;align-items:center;gap:8px}
+.footlinks{margin-left:auto;display:flex;gap:18px}
+.footlinks a{font:600 11px 'Inter';color:var(--gray);text-decoration:none}
+.footlinks a:hover{color:var(--accent-dark)}
+
+@media (max-width:600px){
+  .pchead{flex-direction:column;align-items:flex-start;gap:8px}
+  .pbody .cols2{columns:1}
+}

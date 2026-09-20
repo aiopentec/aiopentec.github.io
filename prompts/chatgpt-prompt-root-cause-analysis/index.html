@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Problem Solving - Root Cause Analysis — Free ChatGPT &amp; Claude Prompt | aiopentec</title>
+<meta name="description" content="Runs a real problem through the Five Whys method to find the actual root cause, then proposes three solutions at different time horizons with implementation …">
+<link rel="canonical" href="https://aiopentec.github.io/prompts/chatgpt-prompt-root-cause-analysis/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Problem Solving - Root Cause Analysis — Free AI Prompt">
+<meta property="og:description" content="Runs a real problem through the Five Whys method to find the actual root cause, then proposes three solutions at different time horizons with implementation …">
+<meta property="og:image" content="https://aiopentec.github.io/prompts/aiopentec-og-image.png">
+<meta property="og:url" content="https://aiopentec.github.io/prompts/chatgpt-prompt-root-cause-analysis/">
+<meta name="twitter:card" content="summary_large_image">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/prompt-page.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Problem Solving - Root Cause Analysis",
+  "description": "Runs a real problem through the Five Whys method to find the actual root cause, then proposes three solutions at different time horizons with implementation …",
+  "step": [{"@type":"HowToStep","text":"Copy the entire prompt below."},{"@type":"HowToStep","text":"Replace the [BRACKETED] fields with your own details."},{"@type":"HowToStep","text":"Paste into ChatGPT, Claude, or any AI assistant."}]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"AI Prompts Library","item":"https://aiopentec.github.io/prompts/"},
+    {"@type":"ListItem","position":2,"name":"Browse all prompts","item":"https://aiopentec.github.io/prompts/browse/"},
+    {"@type":"ListItem","position":3,"name":"Problem Solving - Root Cause Analysis","item":"https://aiopentec.github.io/prompts/chatgpt-prompt-root-cause-analysis/"}
+  ]
+}
+</script>
+<script data-goatcounter="https://aiopentec.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body data-slug="chatgpt-prompt-root-cause-analysis">
+
+<nav><div class="navin">
+  <a class="wm" href="../"><div class="logo"><div style="background:#e2e8f0"></div><div style="background:#e2e8f0"></div><div style="background:#3b82f6"></div><div style="background:#e2e8f0"></div><div style="background:#3b82f6"></div><div style="background:#3b82f6"></div><div style="background:#3b82f6"></div><div style="background:#3b82f6"></div><div style="background:#3b82f6"></div></div>aiopentec</a>
+  <a class="navback" href="../browse/">← All 37 prompts</a>
+</div></nav>
+
+<div class="wrap">
+  <div class="crumb">
+    <a href="../">AI Prompts Library</a><span class="sep">/</span>
+    <a href="../browse/">Browse</a><span class="sep">/</span>
+    <span class="catchip" style="background:#ede9fe;color:#6d28d9"><i style="background:#8b5cf6"></i>Universal</span>
+  </div>
+
+  <h1>Problem Solving</h1>
+  <div class="subtitle">Root Cause Analysis</div>
+  <p class="lede">Runs a real problem through the Five Whys method to find the actual root cause, then proposes three solutions at different time horizons with implementation steps and risks for each.</p>
+  <p class="who"><b>Best for:</b> Anyone troubleshooting a recurring problem at work who suspects the obvious fix isn't actually fixing anything.</p>
+
+  <div class="promptcard">
+    <div class="pchead">
+      <span class="lbl">PROMPT Nº 35 OF 37</span>
+      <button class="copybtn" onclick="copyPrompt(this,'UHJvYmxlbSBTb2x2aW5nIC0gUm9vdCBDYXVzZSBBbmFseXNpcwoKSGVscCBtZSBzb2x2ZSB0aGlzIHByb2JsZW06IFtERVNDUklCRSBQUk9CTEVNXQoKUFJPQkxFTSBERVRBSUxTOgotIFdoYXQncyBoYXBwZW5pbmc6IFtzeW1wdG9tc10KLSBXaGVuIGl0IHN0YXJ0ZWQ6IFt0aW1lbGluZV0KLSBXaG8ncyBhZmZlY3RlZDogW3Blb3BsZS9kZXB0L2N1c3RvbWVyc10KLSBXaGF0IHdlJ3ZlIHRyaWVkOiBbcGFzdCBzb2x1dGlvbnNdCi0gQ3VycmVudCBpbXBhY3Q6IFtjb3N0L3RpbWUvcXVhbGl0eV0KCkFOQUxZWkUgVVNJTkcgNSBXSFlTOgotIFByb2JsZW06IFtzdGF0ZSBpdF0KLSBXaHk/IFtmaXJzdCByZWFzb25dCi0gV2h5PyBbZGlnIGRlZXBlcl0KLSBXaHk/IFtkZWVwZXIgc3RpbGxdCi0gV2h5PyBba2VlcCBnb2luZ10KLSBSb290IGNhdXNlOiBbdGhlIHJlYWwgaXNzdWVdCgpUaGVuIHByb3ZpZGU6CjEuIFJvb3QgQ2F1c2UgU3VtbWFyeQoyLiAzIFBvdGVudGlhbCBTb2x1dGlvbnMgKHNob3J0L21lZC9sb25nIHRlcm0pCjMuIEZvciBlYWNoIHNvbHV0aW9uOgogICAtIEltcGxlbWVudGF0aW9uIHN0ZXBzCiAgIC0gUmVzb3VyY2VzIG5lZWRlZAogICAtIFRpbWVsaW5lCiAgIC0gUmlza3MKICAgLSBFeHBlY3RlZCBvdXRjb21lCjQuIFJlY29tbWVuZGVkIGFwcHJvYWNoICh3aGljaCBzb2x1dGlvbiBhbmQgd2h5KQoKQmUgc3lzdGVtYXRpYyBhbmQgdGhvcm91Z2gu')">📋 COPY PROMPT</button>
+    </div>
+    <div class="pbody"><p class="ld">Help me solve this problem: <span class="v">[DESCRIBE PROBLEM]</span></p><div class="hd">PROBLEM DETAILS:</div><ul><li><span class="lb">What's happening:</span>  <span class="v">[symptoms]</span></li><li><span class="lb">When it started:</span>  <span class="v">[timeline]</span></li><li><span class="lb">Who's affected:</span>  <span class="v">[people/dept/customers]</span></li><li><span class="lb">What we've tried:</span>  <span class="v">[past solutions]</span></li><li><span class="lb">Current impact:</span>  <span class="v">[cost/time/quality]</span></li></ul><div class="hd">ANALYZE USING 5 WHYS:</div><ul><li><span class="lb">Problem:</span>  <span class="v">[state it]</span></li><li><span class="lb">Why? <span class="v">[first reason]</span></span></li><li><span class="lb">Why? <span class="v">[dig deeper]</span></span></li><li><span class="lb">Why? <span class="v">[deeper still]</span></span></li><li><span class="lb">Why? <span class="v">[keep going]</span></span></li><li><span class="lb">Root cause:</span>  <span class="v">[the real issue]</span></li></ul><div class="hd">Then provide:</div><ol><li>Root Cause Summary</li><li>3 Potential Solutions (short/med/long term)</li><li>For each solution:<ul><li>Implementation steps</li><li>Resources needed</li><li>Timeline</li><li>Risks</li><li>Expected outcome</li></ul></li><li>Recommended approach (which solution and why)</li></ol><p class="fmt">Be systematic and thorough.</p></div>
+  </div>
+
+  <div class="cta">
+    <div class="big">Want all 37 prompts?</div>
+    <p>This one's from the free AI Prompts Library — 37 tested, copy-paste prompts for ChatGPT &amp; Claude across 5 categories, plus 8 bonus tips for better output. No sign-up.</p>
+    <a class="btn" href="../ai-prompts-library.pdf" onclick="if(window.goatcounter)goatcounter.count({path:'/pdf-download'})">↓ DOWNLOAD THE FREE PDF</a>
+    <div class="stats">37 PROMPTS · 5 CATEGORIES · $0 FOREVER</div>
+  </div>
+
+  <div class="related">
+    <div class="kick">MORE UNIVERSAL PROMPTS</div>
+    <div class="relgrid"><a class="relcard" href="../chatgpt-prompt-content-repurposing/"><div class="rn">Nº 36</div><div class="rt">Content Repurposing</div><div class="rs">Multi-Platform</div></a><a class="relcard" href="../chatgpt-prompt-tone-rewriter/"><div class="rn">Nº 37</div><div class="rt">Tone Adjustment</div><div class="rs">Rewrite Content</div></a><a class="relcard" href="../chatgpt-prompt-brainstorming/"><div class="rn">Nº 34</div><div class="rt">Brainstorming</div><div class="rs">Idea Generator</div></a></div>
+  </div>
+</div>
+
+<footer><div class="footin">
+  <span class="fwm"><div class="logo"><div style="background:#e2e8f0"></div><div style="background:#e2e8f0"></div><div style="background:#3b82f6"></div><div style="background:#e2e8f0"></div><div style="background:#3b82f6"></div><div style="background:#3b82f6"></div><div style="background:#3b82f6"></div><div style="background:#3b82f6"></div><div style="background:#3b82f6"></div></div>aiopentec</span>
+  <div class="footlinks">
+    <a href="../">AI Prompts Library</a>
+    <a href="../browse/">Browse all</a>
+    <a href="https://github.com/aiopentec">GitHub ↗</a>
+  </div>
+</div></footer>
+
+<script src="../assets/prompt-page.js"></script>
+</body>
+</html>
