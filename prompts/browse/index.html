@@ -31,6 +31,11 @@
 .pt{font:700 15px 'Inter';color:var(--ink)}
 .ps{font:500 12px 'Inter';color:var(--accent-dark);margin-bottom:6px}
 .pw{font:400 12.5px/1.5 'Inter';color:var(--gray)}
+.optin{border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:20px 24px;text-align:center}
+.optin-eyebrow{font:700 9.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-bottom:8px}
+.optin-title{font:700 15px 'Inter';color:var(--ink);margin-bottom:4px}
+.optin-copy{font-size:12.5px;color:#334155;max-width:440px;margin:0 auto 14px;line-height:1.55}
+.optin-form-slot:empty::before{content:"Kit form embed goes here";display:inline-block;font:500 11px 'JetBrains Mono',monospace;color:var(--gray);border:1px dashed var(--line);border-radius:8px;padding:10px 16px}
 </style>
 </head>
 <body>
@@ -269,6 +274,23 @@
     <div class="big">Prefer one PDF?</div>
     <p>All 37 prompts, offline, no sign-up.</p>
     <a class="btn" href="../ai-prompts-library.pdf" onclick="if(window.goatcounter)goatcounter.count({path:'/pdf-download'})">↓ DOWNLOAD THE FREE PDF</a>
+  </div>
+
+  <!--
+    OPTIONAL "GET NEW PROMPTS" OPT-IN
+    Separate from and lower-emphasis than the CTA above on purpose —
+    the PDF above needs no signup ("no email wall, free forever" per
+    the FAQ). This is an optional extra, styled plainer than the
+    primary CTA so it doesn't read as a second required step.
+  -->
+  <div class="optin" style="margin:0 0 20px">
+    <div class="optin-eyebrow">Optional · not required for the PDF above</div>
+    <div class="optin-title">Want new prompts as we add them?</div>
+    <p class="optin-copy">Get a short note when we publish new prompts or ship updates. No spam, unsubscribe anytime.</p>
+    <div class="optin-form-slot">
+      <!-- ↓↓↓ Paste your Kit (ConvertKit) inline form embed code here ↓↓↓
+           Grow → Landing Pages & Forms → your form → Embed → "Inline" -->
+    </div>
   </div>
 </div>
 
