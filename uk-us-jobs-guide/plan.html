@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="aiopentec">
+<meta name="description" content="Free 90-day job-search plan generator for Nigerian professionals targeting UK/US roles. Enter your start date, get your personalized Weeks 1–12 calendar. By aiopentec.">
+<title>90-Day Job Search Plan Generator — aiopentec</title>
+<style>
+:root{--navy:#0B2545;--navy2:#123B63;--green:#008751;--gold:#E8A33D;--gold2:#F5C15C;
+--brand:#3B82F6;--brand-dark:#1D4ED8;--brand-light:#E3E9F4;--ink:#1B1F24;--muted:#55606B;
+--mist:#F3F6F9;--line:#D9E0E7}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Segoe UI",Arial,Helvetica,sans-serif;color:var(--ink);background:#e9edf2;
+-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px 40px}
+.band{display:flex;align-items:center;gap:12px;border-radius:10px;padding:12px 18px;color:#fff;margin:20px 0 0;
+background:linear-gradient(90deg,var(--navy) 0%,#123B63 40%,#1E4FA8 78%,#066A42 130%);flex-wrap:wrap}
+.band .chip{background:var(--gold);color:var(--navy);font-weight:800;font-size:8.5pt;letter-spacing:.5px;
+padding:4px 11px;border-radius:7px;white-space:nowrap}
+.band h1{font-size:15pt;font-weight:800;flex:1;min-width:200px}
+.mk{display:block;flex:none}
+.m6{width:24px;height:24px}.m4{width:16px;height:16px}
+.on-dark{--mk-l:rgba(255,255,255,.92);--mk-b:#5B9BFF}
+.trirule{display:flex;height:5px;border-radius:3px;overflow:hidden;margin:10px 0 18px}
+.trirule span{flex:1}.trirule span:nth-child(1){background:var(--green)}
+.trirule span:nth-child(2){background:var(--gold)}.trirule span:nth-child(3){background:var(--brand)}
+.trirule::after{content:"";flex:1;background:var(--navy)}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:16px}
+.card h2{font-size:13pt;color:var(--navy);margin-bottom:10px;border-left:4px solid var(--green);padding-left:10px}
+.cfg{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end}
+.cfg label{display:block;font-size:11.5px;font-weight:700;color:var(--navy);margin-bottom:4px;letter-spacing:.4px}
+.cfg input,.cfg select{font:600 14px "Segoe UI",Arial;padding:9px 10px;border:1px solid #C4CFDA;border-radius:8px;background:#fff;color:var(--ink)}
+.cfg input:focus,.cfg select:focus{outline:2px solid var(--brand);border-color:var(--brand)}
+.btn{font:700 13px "Segoe UI",Arial;color:#fff;background:var(--brand);border:none;border-radius:8px;
+padding:11px 20px;cursor:pointer;box-shadow:0 3px 10px rgba(59,130,246,.25)}
+.btn:hover{background:var(--brand-dark)}
+.btn.g{background:var(--green);box-shadow:0 3px 10px rgba(0,135,81,.25)}.btn.g:hover{background:#066A42}
+.btn.o{background:#fff;color:var(--brand-dark);border:1px solid #93C5FD;box-shadow:none}
+.btn.o:hover{background:var(--brand-light)}
+.summ{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.summ span{background:var(--brand-light);border:1px solid #C7D7F5;color:var(--brand-dark);
+font-size:12px;font-weight:700;border-radius:99px;padding:5px 12px}
+.routine{display:flex;flex-wrap:wrap;gap:8px}
+.routine span{background:var(--mist);border:1px solid var(--line);border-radius:8px;padding:6px 11px;
+font-size:12.5px;color:var(--navy);font-weight:600}
+.routine b{color:var(--brand-dark)}
+.phase{margin-bottom:20px}
+.phase-h{display:flex;align-items:center;gap:10px;background:var(--navy);color:#fff;border-radius:9px 9px 0 0;
+padding:10px 14px;font-weight:800;font-size:13.5px;flex-wrap:wrap}
+.phase-h .wk{color:var(--gold2);font-size:11px;letter-spacing:1.2px}
+.week{border:1px solid var(--line);border-top:none;background:#fff;padding:12px 16px}
+.week:last-child{border-radius:0 0 9px 9px}
+.week + .week{border-top:1px dashed var(--line)}
+.wt{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.wt b{font-size:13.5px;color:var(--navy)}
+.wt .dates{font-size:11.5px;color:var(--muted);font-weight:600}
+.titem{display:flex;align-items:flex-start;gap:9px;padding:5px 0;font-size:13px;color:#222;line-height:1.45}
+.titem input{margin-top:3px;width:16px;height:16px;accent-color:var(--green);flex:none}
+.titem.done span{text-decoration:line-through;color:var(--muted)}
+.wnote{margin-top:7px;background:var(--brand-light);border:1px solid #C7D7F5;border-radius:8px;
+padding:8px 11px;font-size:12px;color:#1E3A6E;line-height:1.5}
+.progress{height:8px;background:#E3E9EE;border-radius:4px;overflow:hidden;margin-top:8px}
+.progress i{display:block;height:100%;width:0;background:var(--green);transition:width .3s}
+.plabel{font-size:12px;color:var(--muted);font-weight:700;margin-top:6px}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.funnel a{color:var(--brand-dark);font-weight:700;text-decoration:none}
+.funnel p{font-size:13px;line-height:1.6;color:#333;margin:6px 0}
+.stores{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.stores a{display:block;color:#fff;border-radius:9px;padding:10px 16px;font-weight:800;font-size:13px;text-decoration:none}
+.stores a.g{background:var(--green)}.stores a.b{background:var(--brand-dark)}
+.stores a:hover{filter:brightness(1.08)}
+.foot{display:flex;align-items:center;gap:10px;border-top:1px solid var(--line);margin-top:8px;
+padding-top:12px;font-size:11.5px;color:var(--muted);flex-wrap:wrap}
+.foot .fb{display:flex;align-items:center;gap:6px;font-weight:800;color:var(--brand-dark)}
+.foot .fc{margin-left:auto}
+.hidden{display:none}
+@media print{
+ @page{size:A4;margin:12mm}
+ body{background:#fff}
+ .noprint{display:none!important}
+ .wrap{max-width:100%;padding:0}
+ .band{margin:0 0 0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ .card,.week,.phase-h{box-shadow:none}
+ .phase{break-inside:avoid;page-break-inside:avoid}
+ .week{break-inside:avoid;page-break-inside:avoid}
+ .funnel{page-break-before:always}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="aimark" viewBox="0 0 66 66">
+<rect x="1" y="1" width="18" height="18" rx="5" fill="var(--mk-l,#E3E9F4)"/><rect x="24" y="1" width="18" height="18" rx="5" fill="var(--mk-l,#E3E9F4)"/><rect x="47" y="1" width="18" height="18" rx="5" fill="var(--mk-b,#3B82F6)"/>
+<rect x="1" y="24" width="18" height="18" rx="5" fill="var(--mk-l,#E3E9F4)"/><rect x="24" y="24" width="18" height="18" rx="5" fill="var(--mk-b,#3B82F6)"/><rect x="47" y="24" width="18" height="18" rx="5" fill="var(--mk-b,#3B82F6)"/>
+<rect x="1" y="47" width="18" height="18" rx="5" fill="var(--mk-b,#3B82F6)"/><rect x="24" y="47" width="18" height="18" rx="5" fill="var(--mk-b,#3B82F6)"/><rect x="47" y="47" width="18" height="18" rx="5" fill="var(--mk-b,#3B82F6)"/>
+</symbol>
+</svg>
+
+<div class="wrap">
+<header class="band">
+<svg class="mk m6 on-dark"><use href="#aimark" xlink:href="#aimark"/></svg>
+<h1>90-Day Job Search Plan Generator</h1>
+<span class="chip">FREE TOOL</span><span class="chip">NO SIGN-UP</span><span class="chip">100% IN YOUR BROWSER</span>
+</header>
+<div class="trirule"><span></span><span></span><span></span></div>
+
+<div class="card noprint">
+<h2>Set your plan</h2>
+<div class="cfg">
+<div><label for="start">Start date</label><input type="date" id="start"></div>
+<div><label for="country">Target</label>
+<select id="country">
+<option>UK</option><option>US</option><option>UK &amp; US</option><option>Remote / Global</option><option>UK, US &amp; Remote</option>
+</select></div>
+<div><label for="role">Target role</label><input type="text" id="role" placeholder="e.g. Data Analyst" style="width:200px"></div>
+<button class="btn" id="gen">Generate my plan →</button>
+</div>
+<p style="font-size:12px;color:var(--muted);margin-top:10px">Built from Section 8 of the <b>UK/US Jobs Guide</b>. Your entries and ticks are saved only in this browser — nothing is sent anywhere.</p>
+</div>
+
+<div id="out" class="hidden">
+<div class="card">
+<h2>Your plan at a glance</h2>
+<div class="summ" id="sumchips"></div>
+<div class="plabel"><span id="pcount">0</span> of <span id="ptotal">0</span> steps done · Day 90: <b id="day90"></b></div>
+<div class="progress"><i id="pbar"></i></div>
+<div class="tools noprint">
+<button class="btn g" onclick="window.print()">🖨 Print / Save as PDF</button>
+<button class="btn o" id="copybtn">📋 Copy plan as text</button>
+<button class="btn o" id="resetbtn">↺ Reset ticks</button>
+</div>
+</div>
+
+<div class="card">
+<h2>Daily routine (every weekday)</h2>
+<div class="routine">
+<span><b>8:00</b> job alerts</span><span><b>9:00</b> 3–5 tailored applications</span>
+<span><b>12:00</b> skill development</span><span><b>2:00</b> networking</span>
+<span><b>4:00</b> follow-ups &amp; interview prep</span>
+</div>
+</div>
+
+<div id="phases"></div>
+
+<div class="card funnel">
+<h2>Go deeper with the guide</h2>
+<p>This generator schedules the system — the <b>UK/US Jobs Guide (2026 Expanded Edition)</b> supplies the how: the CV kit, three cover-letter templates, 2026 UK/US visa rules with official sources, the 25-question interview bank, salary scripts, and the filled tracker example.</p>
+<div class="stores">
+<a class="g" href="https://selar.com/6hr684926a">🇳🇬 Buy on Selar (₦)</a>
+<a class="b" href="https://aiopentec.gumroad.com/l/uk-us-jobs-guide">🌍 Buy on Gumroad ($)</a>
+</div>
+<p style="margin-top:10px">Free: <a href="/uk-us-jobs-guide/checklist.html">the one-page checklist</a> · <a href="/uk-us-jobs-guide/cv-bullets.html">the CV bullet builder</a> · Questions: <a href="mailto:aiopentec@gmail.com">aiopentec@gmail.com</a></p>
+</div>
+
+<footer class="foot">
+<span class="fb"><svg class="mk m4"><use href="#aimark" xlink:href="#aimark"/></svg>aiopentec · quiet product machines</span>
+<span>Educational planning aid from the UK/US Jobs Guide — not legal advice.</span>
+<span class="fc">© 2026 aiopentec</span>
+</footer>
+</div>
+</div>
+
+<script>
+(function(){
+var PHASES=[
+ {name:"Foundations",wks:[1,2]},
+ {name:"Targeting",wks:[3,4]},
+ {name:"Application Sprint",wks:[5,6,7,8]},
+ {name:"Interviews & Offers",wks:[9,10,11,12]}
+];
+var WEEKS={
+ 1:["Draft your Master CV","Create tailored CV versions for your target roles","Set up a professional email address","Create your application tracker (Section 8 columns)"],
+ 2:["Update your LinkedIn profile (headline, experience, skills, evidence)","Cut tailored CV versions for your top targets","Prepare your target list: 20 UK, 20 US, 20 remote/global employers"],
+ 3:["Build your company database from the 60-target list","Identify relevant vacancies for your role","Check sponsorship status on each target where relevant"],
+ 4:["Research hiring teams at your top targets","Verify each vacancy individually — remote does not mean every country is eligible","Prepare your master cover letter + 3 variants (general, sponsorship, remote)"],
+ 5:["Submit 10–15 tailored applications this week","Log every application in your tracker the day you send it","Measure your response rate at week's end"],
+ 6:["Submit 10–15 tailored applications this week","Measure your response rate at week's end","MID-SPRINT CHECK: no interviews yet? Review CV, targeting and job fit (Section 8)"],
+ 7:["Submit 10–15 tailored applications this week","Measure your response rate at week's end","Follow up politely on applications older than ~1 week"],
+ 8:["Submit 10–15 tailored applications this week","Measure your response rate at week's end","Begin interview preparation early (start Week 9 tasks if replies arrive)"],
+ 9:["Work through the 25-question preparation bank (Section 5)","Draft 10 STAR stories from your real career","Rehearse your 90-second introduction aloud"],
+ 10:["Practice role-specific technical questions / take-home formats","Prepare your sponsorship answer (honest and brief)","Prepare your salary answer from a researched range (Section 6)"],
+ 11:["Send thank-you notes within 24 hours of interviews","Prepare offer evaluation: base, bonus, equity, leave, relocation support","Rehearse the negotiation scripts (Section 6)"],
+ 12:["Evaluate offers with total compensation in view","If rejected: request constructive feedback where appropriate","90-day review: KPIs, funnel diagnosis, and plan your next 90 days"]
+};
+var NOTES={
+ 5:"Diagnose the funnel (Section 8): responses ÷ applications — if low after many targeted applications, review CV, targeting and job fit.",
+ 9:"Diagnose the funnel (Section 8): many interviews but no offers? Review interview performance, communication and offer strategy."
+};
+var $=function(id){return document.getElementById(id)};
+var KEY="aiopentec-plan-v1";
+function todayISO(){var d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).pad(2,"0")+"-"+String(d.getDate()).pad(2,"0")}
+function load(){try{return JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){return{}}}
+function save(o){try{localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}}
+function fmt(d){return d.toLocaleDateString("en-GB",{day:"numeric",month:"short"})}
+function parseD(v){return new Date(v+"T00:00:00")}
+function wRange(start,n){var a=new Date(start);a.setDate(a.getDate()+7*(n-1));
+var b=new Date(a);b.setDate(b.getDate()+6);return fmt(a)+" – "+fmt(b)}
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+ $("start").value=todayISO();
+
+function render(){
+ var sv=load(),startStr=$("start").value;
+ var checks=(sv.data&&sv.data.start===startStr&&sv.data.checks)||{};
+ var start=parseD(startStr),role=esc($("role").value||"your target role"),country=esc($("country").value);
+ var total=0,done=0,html="",text="";
+ // summary
+ $("sumchips").innerHTML="<span>🎯 Role: "+(role==="your target role"?"Not set":role)+"</span><span>🌍 Target: "+country+"</span><span>📅 Start: "+fmt(start)+"</span><span>🏁 Day 90: "+fmt(new Date(new Date(start).setDate(start.getDate()+89)))+"</span>";
+ $("day90").textContent=fmt(new Date(new Date(start).setDate(start.getDate()+89)));
+ PHASES.forEach(function(ph){
+  html+='<div class="phase"><div class="phase-h"><span>'+esc(ph.name)+'</span><span class="wk">WEEKS '+ph.wks[0]+"–"+ph.wks[ph.wks.length-1]+' · SECTION 8</span></div>';
+  ph.wks.forEach(function(n){
+   html+='<div class="week"><div class="wt"><b>Week '+n+"</b><span class='dates'>"+wRange(start,n)+"</span></div>";
+   text+="\nWEEK "+n+" ("+wRange(start,n)+") — "+ph.name.toUpperCase()+"\n";
+   WEEKS[n].forEach(function(t,i){
+    var key="w"+n+"t"+i,is=!!checks[key];total++;if(is)done++;
+    html+='<div class="titem'+(is?" done":"")+'"><input type="checkbox" data-k="'+key+'"'+(is?" checked":"")+'><span>'+esc(t)+"</span></div>";
+    text+="  ["+(is?"x":" ")+"] "+t+"\n";
+   });
+   if(NOTES[n]){html+='<div class="wnote">🔎 '+NOTES[n]+"</div>";text+="  NOTE: "+NOTES[n].replace(/<[^>]+>/g,"")+"\n"}
+   html+="</div>";
+  });
+  html+="</div>";
+  text+="\n";
+ });
+ $("phases").innerHTML=html;
+ $("ptotal").textContent=total;$("pcount").textContent=done;
+ $("pbar").style.width=(total?Math.round(done/total*100):0)+"%";
+ $("out").classList.remove("hidden");
+ // wire checkboxes
+ $("phases").querySelectorAll("input[type=checkbox]").forEach(function(cb){
+  cb.addEventListener("change",function(){
+   var o=load();if(!o.data||o.data.start!==startStr)o.data={start:startStr,checks:{}};
+   if(o.data.start!==startStr)o.data.checks={};
+   o.data.start=startStr;
+   if(cb.checked)o.data.checks[cb.dataset.k]=1;else delete o.data.checks[cb.dataset.k];
+   save(o);render();
+  });
+ });
+ // stash for copy
+ window.__planText="MY 90-DAY JOB SEARCH PLAN — aiopentec\nStart: "+fmt(start)+" · Target: "+country+" · Role: "+(role==="your target role"?"—":role)+"\nFrom the UK/US Jobs Guide, Section 8 · aiopentec.github.io/uk-us-jobs-guide/plan.html\n"+text;
+}
+ $("gen").addEventListener("click",function(){
+ if(!$("start").value){$("start").value=todayISO()}
+ render();$("out").scrollIntoView({behavior:"smooth"});
+});
+ $("resetbtn").addEventListener("click",function(){
+ var o=load();o.data={start:$("start").value,checks:{}};save(o);render();
+});
+ $("copybtn").addEventListener("click",function(){
+ var b=this,done=function(){b.textContent="✓ Copied";setTimeout(function(){b.textContent="📋 Copy plan as text"},1400)};
+ if(navigator.clipboard){navigator.clipboard.writeText(window.__planText||"").then(done).catch(function(){fallback()})}else fallback();
+ function fallback(){var ta=document.createElement("textarea");ta.value=window.__planText||"";
+ document.body.appendChild(ta);ta.select();try{document.execCommand("copy")}catch(e){}document.body.removeChild(ta);done()}
+});
+// restore previous session if same date still set
+var prev=load();
+if(prev.data&&prev.data.start){$("start").value=prev.data.start;render()}
+})();
+</script>
+</body>
+</html>

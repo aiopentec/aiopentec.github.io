@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="aiopentec">
+<meta name="description" content="Free printable one-page job-search checklist for Nigerian professionals targeting UK/US roles. From the aiopentec UK/US Jobs Guide (2026).">
+<title>Free One-Page Job Search Checklist — aiopentec</title>
+<style>
+:root{--navy:#0B2545;--navy2:#123B63;--green:#008751;--gold:#E8A33D;--gold2:#F5C15C;
+--brand:#3B82F6;--brand-dark:#1D4ED8;--brand-light:#E3E9F4;--ink:#1B1F24;--muted:#55606B;
+--mist:#F3F6F9;--line:#D9E0E7;--red:#B23A48}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Segoe UI",Arial,Helvetica,sans-serif;color:var(--ink);background:#4a4f55;
+-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.sheet{width:210mm;min-height:297mm;background:#fff;margin:8mm auto;box-shadow:0 4mm 10mm rgba(0,0,0,.35);
+padding:10mm 13mm 8mm;display:flex;flex-direction:column;position:relative}
+@media print{@page{size:A4;margin:0}html,body{background:#fff}
+.sheet{margin:0;box-shadow:none;height:297mm;break-after:page;page-break-after:always}
+.sheet:last-of-type{break-after:auto;page-break-after:auto}}
+.mk{display:block;flex:none}
+.m4{width:4.2mm;height:4.2mm}.m6{width:6mm;height:6mm}.m11{width:11mm;height:11mm}.m24{width:24mm;height:24mm}
+.on-dark{--mk-l:rgba(255,255,255,.92);--mk-b:#5B9BFF}
+.band{display:flex;align-items:center;gap:4mm;border-radius:2.5mm;padding:2.8mm 4mm;color:#fff;
+background:linear-gradient(90deg,var(--navy) 0%,#123B63 40%,#1E4FA8 78%,#066A42 130%)}
+.band .chip{background:var(--gold);color:var(--navy);font-weight:800;font-size:8.5pt;letter-spacing:.5px;
+padding:1.1mm 2.6mm;border-radius:2mm;white-space:nowrap}
+.band h1{font-size:13pt;font-weight:800;letter-spacing:.3px;flex:1;line-height:1.12}
+.band.brand-b{background:linear-gradient(90deg,var(--brand-dark) 0%,var(--brand) 60%,#2563EB 140%)}
+.trirule{display:flex;height:1.4mm;border-radius:1mm;overflow:hidden;margin:2.2mm 0 3mm}
+.trirule span{flex:1}.trirule span:nth-child(1){background:var(--green)}
+.trirule span:nth-child(2){background:var(--gold)}.trirule span:nth-child(3){background:var(--brand)}
+.trirule::after{content:"";flex:1;background:var(--navy)}
+h3{font-size:10pt;color:var(--navy);letter-spacing:.6px;margin:0 0 1mm;text-transform:uppercase;
+border-left:1.2mm solid var(--brand);padding-left:2mm}
+.ck-group{margin:2.2mm 0}
+.ck-items{display:flex;flex-wrap:wrap;gap:1.3mm 4.2mm;font-size:9.9pt;color:#222}
+.ck{display:inline-flex;align-items:center;gap:1.8mm}
+.ck i{width:3.6mm;height:3.6mm;border:.6mm solid var(--green);border-radius:.9mm;display:inline-block;background:#fff}
+.pd{font-size:9.6pt;color:var(--muted);margin:.2mm 0 1.4mm;letter-spacing:.2px}
+.callout{border-radius:2.5mm;padding:2.4mm 3.4mm;margin-top:3.2mm}
+.callout .lbl{font-weight:800;font-size:9pt;letter-spacing:.6px;margin-bottom:.8mm;text-transform:uppercase}
+.callout p{margin:0;font-size:9.8pt;line-height:1.36}
+.co-final{background:var(--navy);color:#fff}.co-final .lbl{color:var(--gold2)}.co-final p{color:#fff}
+.foot{flex:none;display:flex;align-items:center;gap:3mm;margin-top:auto;padding-top:2.2mm;
+border-top:.35mm solid var(--line);font-size:8.5pt;color:var(--muted);break-inside:avoid}
+.foot .fb{display:flex;align-items:center;gap:2mm;font-weight:800;color:var(--brand-dark);width:44mm;flex:none}
+.foot .fp{flex:1;text-align:center}.foot .fp b{color:var(--navy)}
+.foot .fc{width:44mm;flex:none;text-align:right;font-size:8.2pt;color:#8A96A3}
+.freetag{text-align:center;font-size:8.8pt;color:var(--brand-dark);font-weight:700;letter-spacing:.6px;
+background:var(--brand-light);border:.4mm solid #C7D7F5;border-radius:99px;padding:1.6mm 3mm;margin-top:3mm}
+/* page 2 funnel */
+h2{font-size:12pt;color:var(--navy);margin:3mm 0 1.4mm;padding-left:2.4mm;border-left:1.3mm solid var(--green)}
+p{font-size:10pt;line-height:1.42;margin:1.1mm 0;color:#222}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:2.4mm;margin:2mm 0}
+.fcard{border:.5mm solid var(--line);border-radius:2.5mm;background:var(--mist);padding:2.6mm 3.2mm}
+.fcard b{color:var(--navy);font-size:9.8pt}.fcard p{font-size:9.2pt;line-height:1.38;margin:.6mm 0 0}
+.stores{display:flex;gap:2.4mm;flex-wrap:wrap;margin:2mm 0 3.5mm}
+.store{flex:1;min-width:60mm;min-height:16mm;border-radius:2.5mm;padding:3mm 3.6mm;color:#fff;text-decoration:none;display:block}
+.store h4{font-size:10.5pt;letter-spacing:.3px}.store p{font-size:8.8pt;color:rgba(255,255,255,.85);margin:.6mm 0 0;line-height:1.3}
+.store.g{background:var(--green)}.store.b{background:var(--brand-dark)}
+.qrwrap{display:flex;gap:5mm;align-items:center;border:.5mm solid var(--line);border-radius:2.5mm;
+padding:3mm 4mm;background:var(--mist);margin-top:3mm}
+.qrwrap img{width:26mm;height:26mm;display:block;border-radius:1.5mm}
+.qrwrap .qt{flex:1}.qrwrap .qt b{color:var(--navy)}
+.qrwrap .qt p{font-size:9.2pt;margin:.4mm 0}
+.u{font:700 10.5px 'JetBrains Mono',Consolas,monospace;color:var(--brand-dark)}
+a{text-decoration:none;color:var(--brand-dark);font-weight:600}
+.note{font-size:8.6pt;color:var(--muted);line-height:1.45}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="aimark" viewBox="0 0 66 66">
+<rect x="1" y="1" width="18" height="18" rx="5" fill="var(--mk-l,#E3E9F4)"/><rect x="24" y="1" width="18" height="18" rx="5" fill="var(--mk-l,#E3E9F4)"/><rect x="47" y="1" width="18" height="18" rx="5" fill="var(--mk-b,#3B82F6)"/>
+<rect x="1" y="24" width="18" height="18" rx="5" fill="var(--mk-l,#E3E9F4)"/><rect x="24" y="24" width="18" height="18" rx="5" fill="var(--mk-b,#3B82F6)"/><rect x="47" y="24" width="18" height="18" rx="5" fill="var(--mk-b,#3B82F6)"/>
+<rect x="1" y="47" width="18" height="18" rx="5" fill="var(--mk-b,#3B82F6)"/><rect x="24" y="47" width="18" height="18" rx="5" fill="var(--mk-b,#3B82F6)"/><rect x="47" y="47" width="18" height="18" rx="5" fill="var(--mk-b,#3B82F6)"/>
+</symbol>
+</svg>
+
+<!-- ============ PAGE 1 · THE CHECKLIST ============ -->
+<section class="sheet">
+<header class="band"><span class="chip">FREE</span><h1>PRINTABLE ONE-PAGE JOB SEARCH CHECKLIST</h1><svg class="mk m6 on-dark"><use href="#aimark" xlink:href="#aimark"/></svg></header>
+<div class="trirule"><span></span><span></span><span></span></div>
+
+<div class="pd">Start date: ______________ &nbsp;&nbsp;·&nbsp;&nbsp; 90-day review date: ______________</div>
+
+<div class="ck-group"><h3>CV</h3>
+<div class="ck-items">
+<span class="ck"><i></i>ATS-friendly format</span><span class="ck"><i></i>2 pages where appropriate</span>
+<span class="ck"><i></i>No unnecessary personal details</span><span class="ck"><i></i>Quantified achievements</span>
+<span class="ck"><i></i>Relevant keywords</span></div></div>
+
+<div class="ck-group"><h3>LinkedIn</h3>
+<div class="ck-items">
+<span class="ck"><i></i>Professional headline</span><span class="ck"><i></i>Updated experience</span>
+<span class="ck"><i></i>Skills</span><span class="ck"><i></i>Relevant URL</span><span class="ck"><i></i>Evidence of expertise</span></div></div>
+
+<div class="ck-group"><h3>Targeting</h3>
+<div class="ck-items">
+<span class="ck"><i></i>20 UK targets</span><span class="ck"><i></i>20 US targets</span>
+<span class="ck"><i></i>20 remote/global targets</span><span class="ck"><i></i>Sponsorship checked</span></div></div>
+
+<div class="ck-group"><h3>Application</h3>
+<div class="ck-items">
+<span class="ck"><i></i>CV tailored</span><span class="ck"><i></i>Cover letter tailored</span>
+<span class="ck"><i></i>Salary researched</span><span class="ck"><i></i>Application logged</span></div></div>
+
+<div class="ck-group"><h3>Interview</h3>
+<div class="ck-items">
+<span class="ck"><i></i>10 STAR stories</span><span class="ck"><i></i>90-second introduction</span>
+<span class="ck"><i></i>Sponsorship answer</span><span class="ck"><i></i>Salary answer</span><span class="ck"><i></i>Questions prepared</span></div></div>
+
+<div class="ck-group"><h3>Visa</h3>
+<div class="ck-items">
+<span class="ck"><i></i>Route identified</span><span class="ck"><i></i>Occupation checked</span><span class="ck"><i></i>Sponsor verified</span>
+<span class="ck"><i></i>Salary checked</span><span class="ck"><i></i>Documents reviewed</span><span class="ck"><i></i>Official guidance checked</span></div></div>
+
+<div class="ck-group"><h3>Follow-Up</h3>
+<div class="ck-items">
+<span class="ck"><i></i>Thank-you message</span><span class="ck"><i></i>Follow-up date</span>
+<span class="ck"><i></i>Feedback requested where appropriate</span></div></div>
+
+<div class="ck-group"><h3>Weekly</h3>
+<div class="ck-items">
+<span class="ck"><i></i>10–15 quality applications</span><span class="ck"><i></i>Networking</span>
+<span class="ck"><i></i>Skill development</span><span class="ck"><i></i>KPI review</span></div></div>
+
+<div class="callout co-final">
+<div class="lbl">Final Rule</div>
+<p>Apply strategically, not emotionally. Build evidence of value, verify immigration information through official sources, and keep improving your process.</p>
+</div>
+
+<div class="freetag">FREE — one page of a 19-page system · the full guide is at aiopentec.github.io/uk-us-jobs-guide (see page 2)</div>
+
+<footer class="foot">
+<span class="fb"><svg class="mk m4"><use href="#aimark" xlink:href="#aimark"/></svg>aiopentec</span>
+<span class="fp"><b>Free Checklist</b> &nbsp;•&nbsp; from the UK/US Jobs Guide · 2026 Edition</span>
+<span class="fc">© 2026 aiopentec</span>
+</footer>
+</section>
+
+<!-- ============ PAGE 2 · THE FUNNEL ============ -->
+<section class="sheet">
+<header class="band brand-b"><span class="chip">WHAT NEXT</span><h1>THIS IS 1 PAGE OF A 19-PAGE SYSTEM</h1><svg class="mk m6 on-dark"><use href="#aimark" xlink:href="#aimark"/></svg></header>
+<div class="trirule"><span></span><span></span><span></span></div>
+
+<h2>The checklist tells you <em>what</em>. The guide tells you <em>how</em>.</h2>
+<p>The <b>UK/US Jobs Guide — 2026 Expanded Edition</b> is the complete, sourced system behind this checklist:</p>
+<div class="grid">
+<div class="fcard"><b>📄 CV/Resume Kit</b><p>International format, ATS keywords, and Nigerian-to-international translations (NYSC, degree class, and more) — with a fill-in-the-blanks template.</p></div>
+<div class="fcard"><b>✉️ 3 Cover Letters</b><p>General, sponsorship, and remote — fill-in-the-blank templates with strong-phrase banks and a don't-ever-say list.</p></div>
+<div class="fcard"><b>🛂 Visa &amp; Work Authority 2026</b><p>UK Skilled Worker thresholds, H-1B, L-1, O-1, green cards. Every figure sourced — with official GOV.UK / USCIS links to verify.</p></div>
+<div class="fcard"><b>🎤 Interview + Salary</b><p>25-question preparation bank, STAR method, and word-for-word salary negotiation scripts with UK/US reference ranges.</p></div>
+<div class="fcard"><b>📊 90-Day Plan + Tracker</b><p>Week-by-week plan, tracker columns, a filled sample with the funnel math — and a free online plan generator (below).</p></div>
+<div class="fcard"><b>🛡️ Anti-Scam Directory</b><p>Official sources and fraud-reporting links — because anyone promising a "guaranteed visa" is scamming you.</p></div>
+</div>
+
+<h2>Get the guide</h2>
+<div class="stores">
+<a class="store g" href="https://selar.com/6hr684926a"><h4>🇳🇬 Buy on Selar — ₦</h4><p>Naira checkout, instant download · selar.com/6hr684926a</p></a>
+<a class="store b" href="https://aiopentec.gumroad.com/l/uk-us-jobs-guide"><h4>🌍 Buy on Gumroad — $</h4><p>Worldwide checkout · aiopentec.gumroad.com/l/uk-us-jobs-guide</p></a>
+</div>
+<p class="note">Educational information, not legal advice — no guaranteed jobs or visas.</p>
+
+<h2>Free companion tools</h2>
+<div class="grid">
+<div class="fcard"><b>🗓️ The 90-Day Plan Generator</b>
+<p>Enter your start date and target — it builds your personalized Weeks 1–12 calendar from the guide's system, with checkboxes and print-to-PDF. Free, no sign-up, nothing stored on any server.</p>
+<p class="u">→ aiopentec.github.io/uk-us-jobs-guide/plan.html</p></div>
+<div class="fcard"><b>✍️ CV Bullet Builder</b>
+<p>Turn weak duties into Action + Task + Result bullets, catch filler phrases, print a clean bullet sheet. Free, no sign-up.</p>
+<p class="u">→ aiopentec.github.io/uk-us-jobs-guide/cv-bullets.html</p></div>
+</div>
+
+<h2>Stay in the loop</h2>
+<div class="fcard"><b>📬 Get free tools &amp; updates by email</b>
+<p>Join the list for new free resources and honest career tools:</p>
+<p class="u">→ aiopentec.kit.com/75e91319bc</p></div>
+
+<div class="qrwrap">
+<!-- For a fully offline PDF: generate a QR PNG (any free tool), save as qr.png beside this file, and change src to "qr.png" -->
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&amp;margin=0&amp;data=https%3A%2F%2Faiopentec.github.io%2Fuk-us-jobs-guide"
+ alt="QR code to aiopentec.github.io/uk-us-jobs-guide"
+ onerror="this.onerror=null;this.src='https://quickchart.io/qr?size=320&amp;margin=0&amp;text=https%3A%2F%2Faiopentec.github.io%2Fuk-us-jobs-guide';">
+<div class="qt">
+<b>Scan for everything aiopentec</b>
+<p><span class="u">aiopentec.github.io/uk-us-jobs-guide</span> — free tools, the guide, and new releases.</p>
+<p>Questions? <span class="u">aiopentec@gmail.com</span></p>
+</div>
+</div>
+
+<footer class="foot">
+<span class="fb"><svg class="mk m4"><use href="#aimark" xlink:href="#aimark"/></svg>aiopentec</span>
+<span class="fp"><b>Free Checklist</b> &nbsp;•&nbsp; quiet product machines</span>
+<span class="fc">© 2026 aiopentec</span>
+</footer>
+</section>
+</body>
+</html>

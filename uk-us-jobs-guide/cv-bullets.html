@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="aiopentec">
+<meta name="description" content="Free CV bullet builder and diagnostic tool for Nigerian professionals targeting UK/US roles. Build Action + Task + Result bullets, catch weak phrases, and print a clean bullet sheet. By aiopentec.">
+<title>CV Bullet Builder — aiopentec</title>
+<style>
+:root{--navy:#0B2545;--navy2:#123B63;--green:#008751;--gold:#E8A33D;--gold2:#F5C15C;
+--brand:#3B82F6;--bd:#1D4ED8;--bx:#EFF6FF;--bl:#DBEAFE;--ink:#1B1F24;--muted:#55606B;
+--mist:#F3F6F9;--line:#D9E0E7;--red:#B23A48;--rxl:#FBECEC;--wxl:#FDF4E3;--wln:#F0CE93;--wnk:#B07514}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Segoe UI",Arial,Helvetica,sans-serif;color:var(--ink);background:#E9EDF2;line-height:1.55;
+-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.wrap{max-width:880px;margin:0 auto;padding:0 18px 36px}
+.band{display:flex;align-items:center;gap:12px;border-radius:10px;padding:12px 18px;color:#fff;margin:20px 0 0;
+background:linear-gradient(90deg,var(--navy) 0%,#123B63 40%,#1E4FA8 78%,#066A42 130%);flex-wrap:wrap}
+.band h1{font-size:15pt;font-weight:800;flex:1;min-width:200px}
+.chip{background:var(--gold);color:var(--navy);font-weight:800;font-size:8.5pt;letter-spacing:.5px;
+padding:4px 11px;border-radius:7px;white-space:nowrap}
+.chip.b{background:var(--brand);color:#fff}
+.mk{display:block;flex:none}.m6{width:24px;height:24px}.m4{width:16px;height:16px}
+.trirule{display:flex;height:5px;border-radius:3px;overflow:hidden;margin:10px 0 18px}
+.trirule span{flex:1}.trirule span:nth-child(1){background:var(--green)}
+.trirule span:nth-child(2){background:var(--gold)}.trirule span:nth-child(3){background:var(--brand)}
+.trirule::after{content:"";flex:1;background:var(--navy)}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:16px}
+.card h2{font-size:13pt;color:var(--navy);margin-bottom:10px;border-left:4px solid var(--green);padding-left:10px}
+.tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.tabbtn{font:700 13px "Segoe UI",Arial;padding:10px 18px;border-radius:9px;border:1.5px solid var(--line);
+background:#fff;color:var(--muted);cursor:pointer}
+.tabbtn.on{border-color:var(--brand);background:var(--bx);color:var(--bd)}
+.lbl{display:block;font-size:12px;font-weight:700;color:var(--navy);margin:12px 0 4px;letter-spacing:.3px}
+.lbl small{font-weight:600;color:var(--muted)}
+input[type=text],textarea{width:100%;font:600 14px "Segoe UI",Arial;color:var(--ink);
+border:1.5px solid #C4CFDA;border-radius:8px;padding:10px 12px;background:#fff}
+textarea{resize:vertical;min-height:74px}
+input:focus,textarea:focus{outline:2px solid var(--brand);border-color:var(--brand)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 2px}
+.vchip{font:700 11px "JetBrains Mono",Consolas,monospace;letter-spacing:.04em;color:var(--bd);
+border:1px solid #93C5FD;background:var(--bx);border-radius:99px;padding:5px 11px;cursor:pointer}
+.vchip:hover{background:var(--bl)}
+.mchip{font:600 11.5px "Segoe UI",Arial;color:var(--muted);border:1px solid var(--line);
+border-radius:99px;padding:5px 12px;cursor:pointer;background:#fff}
+.mchip:hover{border-color:var(--brand);color:var(--bd)}
+.hintln{font-size:12px;color:var(--muted);margin-top:6px}
+.preview{border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:8px;
+background:var(--mist);padding:14px 16px;margin-top:16px}
+.preview .plab{font:700 10px "JetBrains Mono",Consolas,monospace;letter-spacing:.14em;color:var(--muted);margin-bottom:6px}
+.bullet{font-size:15px;color:var(--ink);line-height:1.6;min-height:24px}
+.statrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.st{font:700 11px "JetBrains Mono",Consolas,monospace;border-radius:7px;padding:5px 10px;border:1px solid}
+.st.ok{color:var(--green);border-color:#BFE3CD;background:#EAF6EF}
+.st.warn{color:var(--wnk);border-color:var(--wln);background:var(--wxl)}
+.st.info{color:var(--bd);border-color:#93C5FD;background:var(--bx)}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.btn{font:700 13px "Segoe UI",Arial;color:#fff;background:var(--brand);border:none;border-radius:8px;
+padding:11px 18px;cursor:pointer}
+.btn:hover{background:var(--bd)}
+.btn.g{background:var(--green)}.btn.g:hover{background:#066A42}
+.btn.o{background:#fff;color:var(--bd);border:1px solid #93C5FD}.btn.o:hover{background:var(--bx)}
+.btn.x{background:#fff;color:var(--red);border:1px solid #E7B6BB}.btn.x:hover{background:var(--rxl)}
+.diag{list-style:none;margin-top:12px}
+.diag li{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px dashed var(--line);
+font-size:13.5px;color:var(--body);line-height:1.5}
+.diag li:last-child{border-bottom:none}
+.diag .ic{flex:none;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+font:800 11px "Segoe UI";margin-top:1px}
+.ic.pass{background:#EAF6EF;color:var(--green);border:1px solid #BFE3CD}
+.ic.flag{background:var(--wxl);color:var(--wnk);border:1px solid var(--wln)}
+.diag b{color:var(--navy)}
+.vaultlist{list-style:none;margin-top:10px}
+.vaultlist li{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px dashed var(--line)}
+.vaultlist li:last-child{border-bottom:none}
+.vt{flex:1;font-size:14px;color:var(--ink);line-height:1.55}
+.vmeta{font:600 10.5px "JetBrains Mono",Consolas,monospace;color:var(--muted);display:block;margin-top:3px}
+.vbtn{font:700 10.5px "JetBrains Mono",Consolas,monospace;border:1px solid var(--line);background:#fff;
+color:var(--muted);border-radius:6px;padding:5px 10px;cursor:pointer;flex:none}
+.vbtn:hover{color:var(--bd);border-color:#93C5FD}
+.vbtn.del:hover{color:var(--red);border-color:#E7B6BB}
+.empty{font-size:13px;color:var(--muted);padding:8px 0}
+.refgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+.refbox{border:1px solid var(--line);border-radius:9px;padding:12px 14px;background:var(--mist)}
+.refbox b{font-size:12.5px;color:var(--navy);display:block;margin-bottom:6px}
+.refbox p,.refbox li{font-size:12.5px;color:var(--body);line-height:1.55}
+.refbox ul{list-style:none}
+.refbox li{padding:2px 0}
+.refbox code{font:600 11px "JetBrains Mono",Consolas,monospace;color:var(--red);background:#fff;
+border:1px solid var(--line);border-radius:4px;padding:1px 5px}
+.funnel a{color:var(--bd);font-weight:700;text-decoration:none}
+.funnel p{font-size:13px;line-height:1.6;color:#333;margin:6px 0}
+.stores{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.stores a{display:block;color:#fff;border-radius:9px;padding:10px 16px;font-weight:800;font-size:13px;text-decoration:none}
+.stores a.g{background:var(--green)}.stores a.b{background:var(--bd)}
+.stores a:hover{filter:brightness(1.08)}
+.siblings{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:10px}
+.sib{border:1px solid var(--line);border-radius:9px;padding:11px 13px;background:var(--mist)}
+.sib b{font-size:12.5px;color:var(--navy);display:block}
+.sib p{font-size:11.5px;color:var(--muted);margin:3px 0 6px}
+.sib a{font:700 11px "JetBrains Mono",Consolas,monospace;color:var(--bd);text-decoration:none}
+.foot{display:flex;align-items:center;gap:10px;border-top:1px solid var(--line);margin-top:6px;
+padding-top:12px;font-size:11.5px;color:var(--muted);flex-wrap:wrap}
+.foot .fb{display:flex;align-items:center;gap:6px;font-weight:800;color:var(--bd)}
+.foot .fc{margin-left:auto}
+
+/* ═══ PRINT LAYER — dedicated sheet, display-isolated ═══ */
+#printSheet{display:none}
+@media print{
+  @page{size:A4;margin:16mm}
+  html,body{background:#fff!important}
+  .wrap{max-width:100%!important;padding:0!important}
+  .noprint,.noprint *{display:none!important}
+  #printSheet{display:block;width:100%}
+  .ps-title{font-size:20pt;font-weight:800;color:#0B2545;margin-bottom:2mm}
+  .ps-sub{font-size:9.5pt;color:#55606B;margin-bottom:4mm}
+  .ps-date{font:700 9pt "JetBrains Mono",Consolas,monospace;color:#55606B;letter-spacing:.1em;
+    border-bottom:2px solid #0B2545;padding-bottom:2mm;margin-bottom:5mm}
+  .ps-ol{list-style:none;margin:0;padding:0}
+  .ps-ol li{border-bottom:1px solid #E2E8F0;padding:2.5mm 0;margin-bottom:3mm;page-break-inside:avoid}
+  .ps-bullet{font-size:11.5pt;color:#0B2545;line-height:1.5;font-weight:600}
+  .ps-meta{font:600 8pt "JetBrains Mono",Consolas,monospace;color:#64748B;letter-spacing:.08em;margin-top:1mm}
+  .ps-note{margin-top:8mm;font-size:9pt;color:#64748B;line-height:1.6;border-top:1px solid #E2E8F0;padding-top:3mm}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="aimark" viewBox="0 0 66 66">
+<rect x="1" y="1" width="18" height="18" rx="5" fill="#E3E9F4"/><rect x="25" y="1" width="18" height="18" rx="5" fill="#E3E9F4"/><rect x="49" y="1" width="18" height="18" rx="5" fill="#3B82F6"/>
+<rect x="1" y="25" width="18" height="18" rx="5" fill="#E3E9F4"/><rect x="25" y="25" width="18" height="18" rx="5" fill="#3B82F6"/><rect x="49" y="25" width="18" height="18" rx="5" fill="#3B82F6"/>
+<rect x="1" y="49" width="18" height="18" rx="5" fill="#3B82F6"/><rect x="25" y="49" width="18" height="18" rx="5" fill="#3B82F6"/><rect x="49" y="49" width="18" height="18" rx="5" fill="#3B82F6"/>
+</symbol>
+</svg>
+
+<div class="wrap">
+
+<header class="band noprint">
+<svg class="mk m6"><use href="#aimark" xlink:href="#aimark"/></svg>
+<h1>CV Bullet Builder</h1>
+<span class="chip">FREE TOOL</span><span class="chip b">NO SIGN-UP</span><span class="chip b">RUNS IN YOUR BROWSER</span>
+</header>
+<div class="trirule noprint"><span></span><span></span><span></span></div>
+
+<!-- STRUCTURE REFERENCE -->
+<div class="card noprint">
+<h2>The structure, in 10 seconds</h2>
+<p style="font-size:13.5px;color:#333">Every strong CV bullet follows <b>Action + Task + Result</b> — the format used throughout the UK/US Jobs Guide:</p>
+<div class="preview" style="margin-top:10px">
+<div class="plab">EXAMPLE — FROM THE GUIDE</div>
+<div class="bullet">Owned a book of 40+ enterprise accounts, driving $1.2M in renewals.</div>
+</div>
+<div class="refgrid">
+<div class="refbox"><b>✓ Do</b><ul>
+<li>Start with a strong action verb — one tap below (or type your own)</li>
+<li>Include a real number — size, %, currency, time, volume</li>
+<li>Keep it under 25 words (the ATS Breakthrough Pack rule)</li>
+<li>Keep every claim truthful — no invented metrics</li>
+</ul></div>
+<div class="refbox"><b>✕ Swap out</b><ul>
+<li><code>responsible for</code> · <code>duties included</code> · <code>worked on</code></li>
+<li><code>helped with</code> · <code>tasked with</code> · <code>involved in</code></li>
+<li><code>team player</code> · <code>hardworking</code> · <code>various</code></li>
+<li>First-person words (I, my, we) — CV convention drops them</li>
+</ul></div>
+</div>
+</div>
+
+<!-- MODE TABS -->
+<div class="card noprint">
+<div class="tabs">
+<button class="tabbtn on" id="tabBuild" onclick="setMode('build')">🔧 Build a bullet</button>
+<button class="tabbtn" id="tabDiag" onclick="setMode('diag')">🔎 Diagnose an existing one</button>
+</div>
+
+<!-- BUILD PANE -->
+<div id="paneBuild">
+<div class="lbl">1 · Action verb <small>— the guide's 20 power words, one tap to insert (or type your own)</small></div>
+<div class="chips" id="verbChips"></div>
+<input type="text" id="verb" placeholder="e.g. Reduced" autocomplete="off" style="max-width:280px">
+
+<div class="lbl">2 · What you did <small>— the task, lowercase, as it continues the verb</small></div>
+<textarea id="task" placeholder="e.g. support response times across a 3-region helpdesk by introducing ticket prioritization and staff training"></textarea>
+
+<div class="lbl">3 · Result with a number <small>— tap a metric type for a format example, then write yours</small></div>
+<div class="chips" id="metricChips"></div>
+<input type="text" id="result" placeholder="e.g. cutting average response time 45%" autocomplete="off">
+<div class="hintln" id="metricHint"></div>
+
+<div class="preview" aria-live="polite">
+<div class="plab">LIVE PREVIEW — ASSEMBLED BULLET</div>
+<div class="bullet" id="pvBullet">Fill in the fields above…</div>
+<div class="statrow" id="pvStats"></div>
+<div class="hintln" id="pvTip"></div>
+</div>
+
+<div class="btnrow">
+<button class="btn g" onclick="saveToSheet()">＋ Save to my bullet sheet</button>
+<button class="btn" id="buildCopyBtn" onclick="copyBuild()">📋 Copy bullet</button>
+<button class="btn o" onclick="loadExample()">↺ Load the example</button>
+<button class="btn x" onclick="clearBuild()">✕ Clear</button>
+</div>
+</div>
+
+<!-- DIAGNOSE PANE -->
+<div id="paneDiag" style="display:none">
+<div class="lbl">Paste a bullet from your current CV <small>— the check runs as you type; nothing leaves your browser</small></div>
+<textarea id="diagIn" placeholder="e.g. Was responsible for working on various support tasks and helping with customer issues"></textarea>
+<ul class="diag" id="diagOut" aria-live="polite"></ul>
+<div class="btnrow">
+<button class="btn" id="diagCopyBtn" onclick="copyDiag()">📋 Copy bullet</button>
+</div>
+</div>
+</div>
+
+<!-- BULLET SHEET -->
+<div class="card noprint">
+<h2>My bullet sheet <span style="font-size:11pt;color:var(--muted);font-weight:600">— saved in this browser only</span></h2>
+<ul class="vaultlist" id="vaultList"></ul>
+<div class="btnrow">
+<button class="btn" id="vaultCopyBtn" onclick="copyVault()">📋 Copy all</button>
+<button class="btn o" onclick="doPrint()">🖨 Print / Save as PDF</button>
+<button class="btn x" onclick="clearVault()">✕ Clear sheet</button>
+<span class="st info" id="vaultCount" style="margin-left:auto">0 saved</span>
+</div>
+</div>
+
+<!-- FUNNEL -->
+<div class="card funnel noprint">
+<h2>Take it further</h2>
+<p><b>These bullets are Section 2 of a bigger system.</b> The <b>UK/US Jobs Guide (2026 Expanded Edition)</b> puts them into a full international CV, plus 3 cover letters, 2026 visa rules, an interview bank, and salary scripts.</p>
+<div class="stores">
+<a class="g" href="https://selar.com/6hr684926a">🇳🇬 Buy on Selar (₦)</a>
+<a class="b" href="https://aiopentec.gumroad.com/l/uk-us-jobs-guide">🌍 Buy on Gumroad ($)</a>
+</div>
+<p style="margin-top:12px">Want AI to target a bullet at one specific job posting? The <b>ATS Breakthrough Pack</b> (50 prompts — #2 rewrites for impact, #7 surfaces numbers you forgot) is on <a href="https://nestuge.com/p_3yzajjl">Nestuge, ₦15,000</a>.</p>
+<p style="margin-top:8px">Free: <a href="/uk-us-jobs-guide/checklist.html">the one-page checklist</a> · Questions: <a href="mailto:aiopentec@gmail.com">aiopentec@gmail.com</a></p>
+<div class="siblings">
+<div class="sib"><b>🗓️ 90-Day Plan Generator</b><p>Your personalized Weeks 1–12 search calendar.</p><a href="/uk-us-jobs-guide/plan.html">OPEN →</a></div>
+<div class="sib"><b>🆓 AI Prompts Library</b><p>37 tested prompts for ChatGPT &amp; Claude.</p><a href="/prompts/">OPEN →</a></div>
+<div class="sib"><b>✅ One-Page Checklist</b><p>The printable checklist that runs your search.</p><a href="/uk-us-jobs-guide/checklist.html">OPEN →</a></div>
+</div>
+</div>
+
+<!-- DEDICATED PRINT SHEET — hidden on screen, the ONLY content in print -->
+<div id="printSheet">
+  <div class="ps-title">CV Bullet Sheet</div>
+  <div class="ps-sub">Built with the Action + Task + Result structure from the UK/US Jobs Guide</div>
+  <div class="ps-date">AIOPENTEC · <span id="psCount"></span> · <span id="psDate"></span></div>
+  <ol class="ps-ol" id="psList"></ol>
+  <div class="ps-note"><b>Next steps:</b> Drop these into your CV (2-page international format, newest role first). To target each bullet at a specific job posting, use the ATS Breakthrough Pack — Prompt #2 (Bullet Impact Rewrite) and Prompt #7 (Quantifying Experience). Verify every number against your real experience.<br>aiopentec.github.io · © 2026 aiopentec</div>
+</div>
+
+<footer class="foot noprint">
+<span class="fb"><svg class="mk m4"><use href="#aimark" xlink:href="#aimark"/></svg>aiopentec · quiet product machines</span>
+<span>Educational aid — it structures what you provide and never invents content. Verify every bullet against your real experience.</span>
+<span class="fc">© 2026 aiopentec</span>
+</footer>
+
+</div>
+
+<script>
+(function(){
+/* ── data ── */
+var VERBS=["Achieved","Delivered","Improved","Increased","Reduced","Led","Built","Designed","Developed","Automated","Managed","Optimized","Executed","Negotiated","Generated","Streamlined","Implemented","Analyzed","Coordinated","Transformed"];
+var VERBSET={};
+VERBS.forEach(function(v){VERBSET[v.toLowerCase()]=1});
+["owned","drove","cut","grew","launched","scaled","resolved","introduced","established","created","directed","trained","secured","consolidated","overhauled","spearheaded","revamped"].forEach(function(v){VERBSET[v]=1});
+var METRICS=[
+["Percentage","45% faster resolution"],
+["Currency","₦18M in cost savings (or $12K / £9K)"],
+["Team size","a team of 6 across 2 cities"],
+["Time saved","6 hours saved weekly per analyst"],
+["Volume","120+ tickets resolved weekly"],
+["Score / rating","94% CSAT maintained across 4 quarters"]];
+var WEAK=["responsible for","duties included","duty included","worked on","worked with","helped with","helped to","assisted with","assisted in","involved in","tasked with","in charge of","participated in","part of a team","took care of","dealt with","familiar with","exposed to","various","etc.","hardworking","hard worker","team player","detail-oriented","detail oriented","self-starter","go-getter"];
+var KEY="aiopentec-cvb-v1";
+var $=function(id){return document.getElementById(id)};
+
+/* ── helpers ── */
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+function load(){try{return JSON.parse(localStorage.getItem(KEY)||'{"items":[]}')}catch(e){return{items:[]}}}
+function save(o){try{localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}}
+function words(t){return t.trim().split(/\s+/).filter(Boolean).length}
+function cap(s){return s?s.charAt(0).toUpperCase()+s.slice(1):s}
+function hasNum(t){return /\d/.test(t)}
+function weakHits(t){var low=t.toLowerCase(),out=[];
+  WEAK.forEach(function(w){if(low.indexOf(w)!==-1)out.push(w)});return out}
+function copyTxt(t,btn,okLabel){
+  var done=function(){if(btn){var o=btn.textContent;btn.textContent=okLabel||"✓ Copied";
+    setTimeout(function(){btn.textContent=o},1300)}};
+  if(navigator.clipboard){navigator.clipboard.writeText(t).then(done).catch(fb)}else fb();
+  function fb(){var ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);
+    ta.select();try{document.execCommand("copy")}catch(e){}document.body.removeChild(ta);done()}}
+
+/* ── chips ── */
+ $("verbChips").innerHTML=VERBS.map(function(v){
+  return '<button type="button" class="vchip" onclick="pickVerb(\''+v+'\')">'+v+'</button>'}).join("");
+ $("metricChips").innerHTML=METRICS.map(function(m,i){
+  return '<button type="button" class="mchip" onclick="pickMetric('+i+')">'+m[0]+'</button>'}).join("");
+window.pickVerb=function(v){$("verb").value=v;$("verb").focus();update()};
+window.pickMetric=function(i){$("metricHint").textContent="Format example — "+METRICS[i][0]+": "+METRICS[i][1];
+  $("result").focus()};
+
+/* ── build assembly ── */
+function assemble(){
+  var v=$("verb").value.trim().replace(/\s+/g," ").replace(/[.,;:]+$/,"");
+  var t=$("task").value.trim().replace(/\s+/g," ").replace(/[.,;:]+$/,"");
+  var r=$("result").value.trim().replace(/\s+/g," ").replace(/[.]+$/,"");
+  if(!v&&!t&&!r)return{text:"",words:0};
+  var conn=(r&&/^[0-9₦$£€]/.test(r))?" — ":", ";
+  var text="";
+  if(v&&t)text=cap(v)+" "+t+(r?conn+r:"");
+  else if(t)text=cap(t)+(r?conn+r:"");
+  else if(r)text=cap(r);
+  if(text&&!/[.!?]$/.test(text))text+=".";
+  return{text:text,words:words(text)};
+}
+function update(){
+  var a=assemble(),pv=$("pvBullet"),st=$("pvStats"),tip=$("pvTip");
+  pv.innerHTML=a.text?esc(a.text):"<span style='color:var(--muted)'>Fill in the fields above…</span>";
+  if(!a.text){st.innerHTML="";tip.textContent="";return}
+  var joined=a.text.toLowerCase(),hits=weakHits(joined);
+  var first=(a.text.trim().split(/\s+/)[0]||"").replace(/[^A-Za-z]/g,"").toLowerCase();
+  var vOk=!!VERBSET[first],nOk=hasNum(joined);
+  st.innerHTML='<span class="st '+(a.words<=25?"ok":"warn")+'">'+a.words+' / 25 words</span>'
+    +'<span class="st '+(nOk?"ok":"warn")+'">'+(nOk?"✓ contains a number":"no number yet")+'</span>'
+    +'<span class="st '+(vOk?"ok":"warn")+'">'+(vOk?"✓ strong action verb":"weak or unknown opener")+'</span>'
+    +'<span class="st '+(hits.length?"warn":"ok")+'">'+(hits.length?"⚠ weak phrase: "+esc(hits.join(", ")):"✓ no weak phrases")+'</span>';
+  tip.textContent=!nOk
+    ?"No number? Ask yourself what changed: team size? percentage? currency? time saved? volume? If it truly can't be quantified, state the concrete outcome instead."
+    :(a.words>25
+      ?"Trim toward 25 words — the ATS Breakthrough Pack's rule for a reason: short bullets get read."
+      :"Result tip: start the result with the number or an -ing phrase (“cutting…”, “45% faster…”) for the cleanest join.");
+}
+["verb","task","result"].forEach(function(id){$(id).addEventListener("input",update)});
+
+window.loadExample=function(){
+  $("verb").value="Owned";$("task").value="a book of 40+ enterprise accounts";
+  $("result").value="driving $1.2M in renewals";update()};
+window.clearBuild=function(){$("verb").value="";$("task").value="";$("result").value="";
+  $("metricHint").textContent="";update()};
+window.copyBuild=function(){var a=assemble();if(!a.text)return;
+  copyTxt(a.text,$("buildCopyBtn"))};
+
+/* ── diagnose ── */
+function runDiag(){
+  var t=$("diagIn").value.trim(),out=$("diagOut");
+  if(!t){out.innerHTML='<li><span class="ic pass">…</span><span>Paste a bullet above — the diagnostic is instant and runs entirely in your browser.</span></li>';return}
+  var rows=[];
+  var first=(t.split(/\s+/)[0]||"").replace(/[^A-Za-z]/g,"").toLowerCase();
+  var vOk=!!VERBSET[first];
+  rows.push(vOk
+    ?["pass","<b>Strong opener.</b> “"+esc(first)+"” is a solid action verb."]
+    :["flag","<b>Weak opener: “"+esc(first||"—")+"”.</b> Start with an action verb — Build mode's verb chips include the guide's 20 power words."]);
+  var nOk=hasNum(t);
+  rows.push(nOk
+    ?["pass","<b>Contains a number.</b> Quantified bullets land — keep it real and verifiable."]
+    :["flag","<b>No number.</b> Prompt #7 of the ATS Breakthrough Pack asks exactly the right questions: team size? percentage? dollar amount? time saved? volume handled? If it can't be quantified, state the concrete outcome instead."]);
+  var w=words(t);
+  rows.push(w<=25
+    ?["pass","<b>Length: "+w+" words.</b> Within the 25-word rule."]
+    :["flag","<b>Length: "+w+" words — over the 25-word rule.</b> Cut context, keep the verb and the number."]);
+  var hits=weakHits(t.toLowerCase());
+  rows.push(hits.length
+    ?["flag","<b>Weak filler found: "+esc(hits.map(function(h){return "“"+h+"”"}).join(", "))+".</b> Swap each for a specific action + outcome — filler phrases are invisible to recruiters and add nothing for the ATS."]
+    :["pass","<b>No weak filler phrases.</b> Clean vocabulary."]);
+  var fp=t.match(/\b(I|my|me|we|our|us)\b/i);
+  rows.push(fp
+    ?["flag","<b>First-person word found (“"+esc(fp[0])+"”). CV convention:</b> drop the pronoun — the verb carries the sentence."]
+    :["pass","<b>No first-person pronouns.</b> Matches CV convention."]);
+  if(/^(was|were|is|are|been)\b/i.test(t))
+    rows.push(["flag","<b>Passive opening.</b> Lead with what you did, not what was done — flip to an active verb."]);
+  else
+    rows.push(["pass","<b>Active voice.</b> The sentence leads with action."]);
+  if(/\betc\.?\b|\.\.\./i.test(t))
+    rows.push(["flag","<b>“etc.” or “…” found.</b> Never in a CV bullet — list the two most impressive items instead of gesturing at more."]);
+  var allOk=rows.every(function(r){return r[0]==="pass"});
+  if(allOk)rows.push(["pass","<b>Solid bullet.</b> One last check: confirm the number is real and the phrasing matches your actual scope — then it's sheet-ready."]);
+  out.innerHTML=rows.map(function(r){
+    return '<li><span class="ic '+(r[0]==="pass"?"pass":"flag")+'">'+(r[0]==="pass"?"✓":"⚠")+'</span><span>'+r[1]+"</span></li>"}).join("");
+}
+ $("diagIn").addEventListener("input",runDiag);
+window.copyDiag=function(){var t=$("diagIn").value.trim();if(t)copyTxt(t,$("diagCopyBtn"))};
+
+/* ── tabs ── */
+window.setMode=function(m){
+  $("tabBuild").classList.toggle("on",m==="build");
+  $("tabDiag").classList.toggle("on",m==="diag");
+  $("paneBuild").style.display=m==="build"?"block":"none";
+  $("paneDiag").style.display=m==="diag"?"block":"none";
+};
+
+/* ── vault ── */
+function renderVault(){
+  var o=load(),L=$("vaultList");
+  $("vaultCount").textContent=o.items.length+" saved";
+  if(!o.items.length){L.innerHTML='<li class="empty">Your sheet is empty — build or paste a bullet above and save it here. Everything stays in this browser; nothing is uploaded.</li>';return}
+  L.innerHTML=o.items.map(function(b,i){
+    return '<li><span class="vt">'+esc(b)+'<span class="vmeta">'+words(b)+' WORDS</span></span>'
+      +'<button type="button" class="vbtn" onclick="copyItem('+i+',this)">COPY</button>'
+      +'<button type="button" class="vbtn del" onclick="delItem('+i+')" aria-label="Delete">✕</button></li>'}).join("");
+}
+window.saveToSheet=function(){
+  var a=assemble();if(!a.text){alert("Build a bullet first — fill in the fields above.");return}
+  var o=load();
+  if(o.items.length>=15){alert("Sheet holds 15 bullets — print it, then clear and start a fresh sheet.");return}
+  if(o.items.indexOf(a.text)!==-1){alert("Already on your sheet.");return}
+  o.items.push(a.text);save(o);renderVault();
+};
+window.copyItem=function(i,btn){var o=load();copyTxt(o.items[i],btn,"✓")};
+window.delItem=function(i){var o=load();o.items.splice(i,1);save(o);renderVault()};
+window.copyVault=function(){var o=load();
+  if(!o.items.length){alert("Nothing to copy yet.");return}
+  copyTxt(o.items.join("\n"),$("vaultCopyBtn"),"✓ All copied")};
+window.clearVault=function(){
+  if(!confirm("Clear the whole bullet sheet? This can't be undone."))return;
+  save({items:[]});renderVault()};
+
+/* ── print sheet ── */
+function buildPrintSheet(){
+  var o=load(),list=$("psList");
+  $("psCount").textContent=o.items.length+" BULLETS";
+  $("psDate").textContent=new Date().toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"});
+  if(!o.items.length){
+    list.innerHTML='<li style="border-bottom:none"><span style="color:#64748B;font-size:10pt">Your sheet is empty — build or paste a bullet, save it, then print.</span></li>';
+    return;
+  }
+  list.innerHTML=o.items.map(function(b){
+    return '<li><div class="ps-bullet">'+esc(b)+'</div>'
+      +'<div class="ps-meta">'+words(b)+' WORDS</div></li>'}).join("");
+}
+window.doPrint=function(){buildPrintSheet();window.print()};
+
+/* ── init ── */
+renderVault();
+update();
+runDiag();
+})();
+</script>
+</body>
+</html>
