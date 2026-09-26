@@ -6,6 +6,7 @@
 <meta name="author" content="aiopentec">
 <meta name="description" content="Free 90-day job-search plan generator for Nigerian professionals targeting UK/US roles. Enter your start date, get your personalized Weeks 1–12 calendar. By aiopentec.">
 <title>90-Day Job Search Plan Generator — aiopentec</title>
+<script data-goatcounter="https://aiopentec.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <style>
 :root{--navy:#0B2545;--navy2:#123B63;--green:#008751;--gold:#E8A33D;--gold2:#F5C15C;
 --brand:#3B82F6;--brand-dark:#1D4ED8;--brand-light:#E3E9F4;--ink:#1B1F24;--muted:#55606B;
@@ -143,6 +144,8 @@ padding-top:12px;font-size:11.5px;color:var(--muted);flex-wrap:wrap}
 
 <div id="phases"></div>
 
+</div>
+
 <div class="card funnel">
 <h2>Go deeper with the guide</h2>
 <p>This generator schedules the system — the <b>UK/US Jobs Guide (2026 Expanded Edition)</b> supplies the how: the CV kit, three cover-letter templates, 2026 UK/US visa rules with official sources, the 25-question interview bank, salary scripts, and the filled tracker example.</p>
@@ -158,7 +161,6 @@ padding-top:12px;font-size:11.5px;color:var(--muted);flex-wrap:wrap}
 <span>Educational planning aid from the UK/US Jobs Guide — not legal advice.</span>
 <span class="fc">© 2026 aiopentec</span>
 </footer>
-</div>
 </div>
 
 <script>
@@ -214,7 +216,7 @@ function render(){
    text+="\nWEEK "+n+" ("+wRange(start,n)+") — "+ph.name.toUpperCase()+"\n";
    WEEKS[n].forEach(function(t,i){
     var key="w"+n+"t"+i,is=!!checks[key];total++;if(is)done++;
-    html+='<div class="titem'+(is?" done":"")+'"><input type="checkbox" data-k="'+key+'"'+(is?" checked":"")+'><span>'+esc(t)+"</span></div>";
+    html+='<label class="titem'+(is?" done":"")+'"><input type="checkbox" data-k="'+key+'"'+(is?" checked":"")+'><span>'+esc(t)+"</span></label>";
     text+="  ["+(is?"x":" ")+"] "+t+"\n";
    });
    if(NOTES[n]){html+='<div class="wnote">🔎 '+NOTES[n]+"</div>";text+="  NOTE: "+NOTES[n].replace(/<[^>]+>/g,"")+"\n"}

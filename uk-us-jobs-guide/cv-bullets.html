@@ -6,6 +6,7 @@
 <meta name="author" content="aiopentec">
 <meta name="description" content="Free CV bullet builder and diagnostic tool for Nigerian professionals targeting UK/US roles. Build Action + Task + Result bullets, catch weak phrases, and print a clean bullet sheet. By aiopentec.">
 <title>CV Bullet Builder — aiopentec</title>
+<script data-goatcounter="https://aiopentec.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <style>
 :root{--navy:#0B2545;--navy2:#123B63;--green:#008751;--gold:#E8A33D;--gold2:#F5C15C;
 --brand:#3B82F6;--bd:#1D4ED8;--bx:#EFF6FF;--bl:#DBEAFE;--ink:#1B1F24;--muted:#55606B;
@@ -175,14 +176,14 @@ padding-top:12px;font-size:11.5px;color:var(--muted);flex-wrap:wrap}
 
 <!-- BUILD PANE -->
 <div id="paneBuild">
-<div class="lbl">1 · Action verb <small>— the guide's 20 power words, one tap to insert (or type your own)</small></div>
+<label class="lbl" for="verb">1 · Action verb <small>— the guide's 20 power words, one tap to insert (or type your own)</small></label>
 <div class="chips" id="verbChips"></div>
 <input type="text" id="verb" placeholder="e.g. Reduced" autocomplete="off" style="max-width:280px">
 
-<div class="lbl">2 · What you did <small>— the task, lowercase, as it continues the verb</small></div>
+<label class="lbl" for="task">2 · What you did <small>— the task, lowercase, as it continues the verb</small></label>
 <textarea id="task" placeholder="e.g. support response times across a 3-region helpdesk by introducing ticket prioritization and staff training"></textarea>
 
-<div class="lbl">3 · Result with a number <small>— tap a metric type for a format example, then write yours</small></div>
+<label class="lbl" for="result">3 · Result with a number <small>— tap a metric type for a format example, then write yours</small></label>
 <div class="chips" id="metricChips"></div>
 <input type="text" id="result" placeholder="e.g. cutting average response time 45%" autocomplete="off">
 <div class="hintln" id="metricHint"></div>
@@ -204,7 +205,7 @@ padding-top:12px;font-size:11.5px;color:var(--muted);flex-wrap:wrap}
 
 <!-- DIAGNOSE PANE -->
 <div id="paneDiag" style="display:none">
-<div class="lbl">Paste a bullet from your current CV <small>— the check runs as you type; nothing leaves your browser</small></div>
+<label class="lbl" for="diagIn">Paste a bullet from your current CV <small>— the check runs as you type; nothing leaves your browser</small></label>
 <textarea id="diagIn" placeholder="e.g. Was responsible for working on various support tasks and helping with customer issues"></textarea>
 <ul class="diag" id="diagOut" aria-live="polite"></ul>
 <div class="btnrow">
