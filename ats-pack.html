@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="aiopentec">
+<title>The ATS Breakthrough Pack — 50 AI Prompts to Get Past the Bots</title>
+<meta name="description" content="50 copy-paste AI prompts that beat Applicant Tracking Systems: resume rewriting, keyword gap analysis, cover letters, LinkedIn, interview prep, negotiation. One posting to submitted application in 10–15 minutes. $9, instant download.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0b2545; --navy-2:#123b63; --ink:#0f172a; --body:#334155; --muted:#64748b;
+    --blue:#3b82f6; --blue-d:#1d4ed8; --blue-l:#dbeafe; --blue-x:#eff6ff;
+    --green:#008751; --gold:#e8a33d; --gold-2:#f5c15c;
+    --line:#e2e8f0; --term:#0f172a; --term-line:#1e293b;
+    --card-shadow:0 18px 40px -20px rgba(11,37,69,0.35);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);line-height:1.6;background:#eef1f5;-webkit-font-smoothing:antialiased}
+  .mono{font-family:'JetBrains Mono',monospace}
+  a{color:inherit}
+  :focus-visible{outline:3px solid rgba(91,155,255,.7);outline-offset:2px;border-radius:6px}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 1.6rem}
+
+  @media (prefers-reduced-motion:no-preference){
+    .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.in{opacity:1;transform:translateY(0)}
+  }
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.96);backdrop-filter:blur(6px)}
+  .nav-inner{max-width:1060px;margin:0 auto;padding:0 1.6rem;height:62px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{display:flex;align-items:center;gap:9px;text-decoration:none}
+  .brand svg{display:block}
+  .brand .wm{font-weight:800;font-size:15px;color:#fff}
+  .brand .tg{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.24em;color:#9FB4D8;margin-top:2px}
+  .nav-cta{background:var(--blue);color:#fff;padding:9px 18px;border-radius:8px;font-size:13.5px;font-weight:700;text-decoration:none;white-space:nowrap}
+  .nav-cta:hover{background:var(--blue-d)}
+
+  /* HERO */
+  .hero{background:linear-gradient(150deg,#0B2545 0%,#123B63 55%,#0B4A38 115%);color:#fff;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;opacity:.13;background-image:radial-gradient(#7fb0ff 1px,transparent 1px);background-size:24px 24px}
+  .hero-inner{position:relative;z-index:2;max-width:1060px;margin:0 auto;padding:4.2rem 1.6rem 3.6rem;display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center}
+  .eyebrow{display:inline-block;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;letter-spacing:.28em;color:var(--gold-2);margin-bottom:1rem}
+  h1.headline{font-size:clamp(2.1rem,4.4vw,3.2rem);line-height:1.1;letter-spacing:-.025em;font-weight:800;margin-bottom:1.1rem}
+  .headline span{color:#5B9BFF}
+  .hero-sub{font-size:16.5px;color:#CFE3D6;max-width:480px;margin-bottom:1.7rem}
+  .hero-ctas{display:flex;align-items:center;gap:1.1rem;flex-wrap:wrap}
+  .btn-primary{background:var(--blue);color:#fff;padding:14px 26px;border-radius:9px;font-weight:700;font-size:15px;text-decoration:none;display:inline-block;box-shadow:0 12px 26px -10px rgba(59,130,246,.6);transition:transform .15s ease}
+  .btn-primary:hover{transform:translateY(-2px);background:var(--blue-d)}
+  .price-tag{font-size:13.5px;color:#9FB4D8}
+  .price-tag b{color:#fff;font-size:15px}
+  .hero-chips{display:flex;gap:9px;flex-wrap:wrap;margin-top:1.7rem}
+  .hero-chips span{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;letter-spacing:.08em;color:#DBEAFE;border:2px solid rgba(127,177,255,.5);border-radius:99px;padding:8px 15px}
+
+  /* terminal demo */
+  .term{background:var(--term);border:2px solid var(--term-line);border-radius:14px;overflow:hidden;box-shadow:0 26px 60px rgba(0,0,0,.45)}
+  .tbar{display:flex;gap:7px;padding:13px 16px;border-bottom:2px solid var(--term-line);align-items:center}
+  .tbar i{width:11px;height:11px;border-radius:50%;background:#334155;display:block}
+  .tbar i:first-child{background:#ff5f56}.tbar i:nth-child(2){background:#ffbd2e}.tbar i:nth-child(3){background:#27c93f}
+  .tbar .fn{margin-left:auto;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:10px;color:#64748B;letter-spacing:.12em}
+  .term pre{padding:1.4rem 1.5rem;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:2;color:#CBD5E1;white-space:pre-wrap;word-break:break-word;margin:0}
+  .term pre b{color:#5B9BFF}
+  .term pre em{font-style:normal;color:#7FE0B8;font-weight:700}
+  .term .fld{color:#5B9BFF;font-weight:700}
+
+  .section{padding:3.4rem 0}
+  .section-head{margin-bottom:1.9rem}
+  .kicker{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;letter-spacing:.26em;color:var(--blue-d);display:inline-block;margin-bottom:6px}
+  h2.section-title{font-size:clamp(1.45rem,3vw,1.9rem);font-weight:800;letter-spacing:-.015em}
+  .lead{font-size:15px;color:var(--body);max-width:680px}
+
+  /* problem section */
+  .versus{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem;margin-top:.4rem}
+  .vcard{border-radius:12px;padding:1.4rem 1.5rem;border:1px solid var(--line);background:#fff}
+  .vcard.bad{border-color:#F0CE93;background:#FDF9EF}
+  .vcard.good{border-color:#BFE3CD;background:#F3FBF6}
+  .vcard .vl{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;letter-spacing:.14em;margin-bottom:.8rem}
+  .vcard.bad .vl{color:#B07514}.vcard.good .vl{color:var(--green)}
+  .vcard p.q{font-family:'JetBrains Mono',monospace;font-size:13.5px;color:var(--body);background:rgba(15,23,42,.04);border-radius:8px;padding:.8rem 1rem;margin-bottom:.7rem;line-height:1.55}
+  .vcard p.r{font-size:13.5px;color:var(--ink-soft,var(--body))}
+  .vcard.good p.r{color:#0B5C3B;font-weight:600}
+  @media(max-width:800px){.versus{grid-template-columns:1fr}}
+
+  /* chain steps */
+  .chain{display:grid;grid-template-columns:repeat(5,1fr);gap:.9rem;counter-reset:chain}
+  .chain-step{background:#fff;border:1px solid var(--line);border-radius:12px;padding:1.15rem 1.05rem;box-shadow:var(--card-shadow);counter-increment:chain;position:relative}
+  .chain-step::before{content:counter(chain);font-family:'JetBrains Mono',monospace;font-weight:800;font-size:13px;color:#fff;background:var(--green);width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:.7rem}
+  .chain-step b{display:block;font-size:13px;margin-bottom:4px}
+  .chain-step span{font-size:12px;color:var(--muted);line-height:1.5;display:block}
+  .chain-step .pn{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--blue-d);font-weight:700;display:block;margin-bottom:3px}
+  .chain-total{margin-top:1.1rem;background:var(--green);color:#fff;border-radius:10px;padding:.85rem 1.2rem;font-weight:700;font-size:14px;text-align:center}
+  @media(max-width:960px){.chain{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.chain{grid-template-columns:1fr}}
+
+  /* live prompt sample */
+  .prompt-demo{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--card-shadow);overflow:hidden;max-width:780px;margin:0 auto}
+  .pd-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.3rem;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .pd-head .t{display:flex;align-items:baseline;gap:9px}
+  .pd-head .no{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;color:var(--blue-d);background:var(--blue-x);border:1px solid #93C5FD;border-radius:6px;padding:3px 9px}
+  .pd-head .ti{font-weight:700;font-size:15px}
+  .copy-btn{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;background:var(--ink);color:#fff;border:none;border-radius:8px;padding:9px 16px;cursor:pointer;box-shadow:0 8px 18px -8px rgba(28,42,68,.5);transition:transform .15s ease,background .15s ease}
+  .copy-btn:hover{transform:translateY(-1px)}
+  .copy-btn.ok{background:var(--green)}
+  .pd-term{background:var(--term);border-radius:0 0 12px 12px}
+  .pd-term .ptext{padding:1.3rem 1.5rem;font-family:'JetBrains Mono',monospace;font-size:13.5px;line-height:1.85;color:#CBD5E1;white-space:pre-wrap;word-break:break-word}
+  .pd-term .fld{color:#5B9BFF;font-weight:700}
+  .sample-note{font-size:12.5px;color:var(--muted);text-align:center;margin-top:.8rem;font-family:'JetBrains Mono',monospace}
+
+  /* what's inside */
+  .inside{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+  .in-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:1.25rem 1.3rem;box-shadow:var(--card-shadow)}
+  .in-card .n{font-family:'JetBrains Mono',monospace;font-weight:800;font-size:22px;color:var(--blue-d)}
+  .in-card b{display:block;font-size:14px;margin:.25rem 0 4px}
+  .in-card p{font-size:12.5px;color:var(--muted);line-height:1.5}
+  @media(max-width:800px){.inside{grid-template-columns:1fr}}
+
+  /* stamps */
+  .stamp-row{display:flex;gap:.9rem;flex-wrap:wrap;justify-content:center}
+  .stamp{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;letter-spacing:.06em;color:#CFE3D6;border:2px dashed rgba(127,177,255,.45);border-radius:10px;padding:.7rem 1.3rem}
+  .center{text-align:center}
+
+  /* receipt */
+  .receipt{max-width:360px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--card-shadow);padding:2rem 1.9rem;text-align:center}
+  .receipt .serif2{font-weight:800;font-size:19px;margin-bottom:2px}
+  .receipt .price{font-size:42px;font-weight:800;letter-spacing:-.02em;margin:.5rem 0 .1rem}
+  .receipt .price-note{font-size:12.5px;color:var(--muted);margin-bottom:1.2rem}
+  .receipt hr{border:none;border-top:1px dashed var(--line);margin:1rem 0}
+  .receipt ul{list-style:none;text-align:left;font-size:13.5px;color:var(--body);margin-bottom:1.3rem}
+  .receipt li{padding:3px 0}
+  .receipt li::before{content:'· ';color:var(--green);font-weight:800}
+  .receipt .multi{margin-top:.9rem;font-size:12px;color:var(--muted)}
+  .receipt .multi a{color:var(--blue-d);font-weight:600;text-decoration:none}
+  .receipt .multi a:hover{text-decoration:underline}
+
+  /* faq */
+  .faq-item{border-bottom:1px solid var(--line);padding:1.05rem 0}
+  .faq-q{display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:600;font-size:15px}
+  .faq-q .mark{font-family:'JetBrains Mono',monospace;color:var(--blue);font-size:18px;font-weight:700;transition:transform .2s ease}
+  .faq-item.open .mark{transform:rotate(45deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+  .faq-a p{font-size:14px;color:var(--body);padding-top:.7rem;max-width:680px}
+  .faq-item.open .faq-a{max-height:220px}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:2.2rem 0;margin-top:2.5rem;background:#fff}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:12.5px;color:var(--muted)}
+  .footer-inner .fb{display:flex;align-items:center;gap:7px;font-weight:800;color:var(--blue-d)}
+  .footer-inner a{text-decoration:none;color:var(--body);font-weight:600}
+  .footer-inner a:hover{color:var(--ink)}
+
+  @media(max-width:880px){
+    .hero-inner{grid-template-columns:1fr;padding-top:3.2rem}
+    .section{padding:2.6rem 0}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="aimark" viewBox="0 0 66 66">
+<rect x="1" y="1" width="18" height="18" rx="5" fill="rgba(255,255,255,.92)"/><rect x="25" y="1" width="18" height="18" rx="5" fill="rgba(255,255,255,.92)"/><rect x="49" y="1" width="18" height="18" rx="5" fill="#5B9BFF"/>
+<rect x="1" y="25" width="18" height="18" rx="5" fill="rgba(255,255,255,.92)"/><rect x="25" y="25" width="18" height="18" rx="5" fill="#5B9BFF"/><rect x="49" y="25" width="18" height="18" rx="5" fill="#5B9BFF"/>
+<rect x="1" y="49" width="18" height="18" rx="5" fill="#5B9BFF"/><rect x="25" y="49" width="18" height="18" rx="5" fill="#5B9BFF"/><rect x="49" y="49" width="18" height="18" rx="5" fill="#5B9BFF"/>
+</symbol>
+<symbol id="aimark-dark" viewBox="0 0 66 66">
+<rect x="1" y="1" width="18" height="18" rx="5" fill="#D7DEE9"/><rect x="25" y="1" width="18" height="18" rx="5" fill="#D7DEE9"/><rect x="49" y="1" width="18" height="18" rx="5" fill="#3B82F6"/>
+<rect x="1" y="25" width="18" height="18" rx="5" fill="#D7DEE9"/><rect x="25" y="25" width="18" height="18" rx="5" fill="#3B82F6"/><rect x="49" y="25" width="18" height="18" rx="5" fill="#3B82F6"/>
+<rect x="1" y="49" width="18" height="18" rx="5" fill="#3B82F6"/><rect x="25" y="49" width="18" height="18" rx="5" fill="#3B82F6"/><rect x="49" y="49" width="18" height="18" rx="5" fill="#3B82F6"/>
+</symbol>
+</svg>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="brand">
+      <svg width="30" height="30" viewBox="0 0 66 66"><use href="#aimark"/></svg>
+      <div><div class="wm">aiopentec</div><div class="tg">QUIET PRODUCT MACHINES</div></div>
+    </a>
+    <a href="https://aiopentec.gumroad.com/l/ats-breakthrough-pack" class="nav-cta">Get the pack — $9</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow">✓ WORKS IN THE AI CHAT YOU ALREADY HAVE OPEN</span>
+      <h1 class="headline">Your resume isn't rejected by humans.<br><span>It's rejected by software.</span> Beat it.</h1>
+      <p class="hero-sub">50 copy-paste AI prompts that rewrite your resume, close your keyword gaps, and sync your LinkedIn — for one specific job posting at a time. Honest prompts: they ask for your real numbers instead of inventing them.</p>
+      <div class="hero-ctas">
+        <a href="https://aiopentec.gumroad.com/l/ats-breakthrough-pack" class="btn-primary">Get the pack — instant download</a>
+        <span class="price-tag"><b>$9</b> one-time · no app, no signup</span>
+      </div>
+      <div class="hero-chips">
+        <span>40 CORE PROMPTS</span><span>10 BONUS</span><span>5-MIN CHAIN</span><span>CHATGPT · CLAUDE · GEMINI</span>
+      </div>
+    </div>
+    <div class="term">
+      <div class="tbar"><i></i><i></i><i></i><span class="fn">5-MINUTE QUICK START</span></div>
+      <pre><b>$</b> aiopentec ats --chain
+▸ #11 extract keywords ....... <em>ok</em>
+▸ #1  master resume rewrite .. <em>ok</em>
+▸ #18 final gap check ........ <em>ok</em>
+▸ #19 cover letter ........... <em>ok</em>
+▸ #26 linkedin sync .......... <em>ok</em>
+▸ application submitted in <em>10–15 min</em></pre>
+    </div>
+  </div>
+</header>
+
+<!-- THE PROBLEM -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">→ WHY APPLICATIONS DIE</span>
+      <h2 class="section-title">Same work. Two resumes. Different fate.</h2>
+      <p class="lead">An ATS scores your resume by matching its vocabulary against the job posting — before a human ever reads it. The words you use decide the percentile.</p>
+    </div>
+    <div class="versus reveal">
+      <div class="vcard bad">
+        <div class="vl">✕ DESCRIBED ONE WAY</div>
+        <p class="q">"Managed client relationships for enterprise customers."</p>
+        <p class="r">Generic verbs, posting's vocabulary missing — the ATS can't connect this to the job description, no matter how true it is.</p>
+      </div>
+      <div class="vcard good">
+        <div class="vl">✓ DESCRIBED THE ATS WAY</div>
+        <p class="q">"Owned a book of 40+ enterprise accounts, driving $1.2M in renewals."</p>
+        <p class="r">Posting's terms mirrored, number included — same truth, now legible to the software <i>and</i> more impressive to the recruiter.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE CHAIN -->
+<section class="section" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">→ THE SYSTEM</span>
+      <h2 class="section-title">One posting in. Submitted application out. 10–15 minutes.</h2>
+      <p class="lead">You don't run all 50 prompts every time. The 5-Minute Quick Start is the chain that matters:</p>
+    </div>
+    <div class="chain reveal">
+      <div class="chain-step"><span class="pn">PROMPT #11</span><b>Extract keywords</b><span>Paste the posting, get the exact terms the ATS scans for.</span></div>
+      <div class="chain-step"><span class="pn">PROMPT #1</span><b>Rewrite the resume</b><p style="display:none"></p><span>Your resume + those keywords → tailored version.</span></div>
+      <div class="chain-step"><span class="pn">PROMPT #18</span><b>Close the gaps</b><span>Tailored resume vs. posting — catch anything still missing.</span></div>
+      <div class="chain-step"><span class="pn">PROMPT #19</span><b>Match the cover letter</b><span>Same posting + rewritten resume → matched letter.</span></div>
+      <div class="chain-step"><span class="pn">PROMPT #26</span><b>Sync LinkedIn</b><span>New summary → headline, so your profile matches what you submitted.</span></div>
+    </div>
+    <div class="chain-total reveal">Total time: 10–15 minutes per application, once you're used to the flow.</div>
+  </div>
+</section>
+
+<!-- LIVE PROMPT SAMPLE -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal center">
+      <span class="kicker">→ SEE A REAL PROMPT</span>
+      <h2 class="section-title">This is Prompt #11 — copy it right here.</h2>
+      <p class="lead" style="margin:0.4rem auto 0">One of fifty. The blue brackets are yours to fill.</p>
+    </div>
+    <div class="prompt-demo reveal">
+      <div class="pd-head">
+        <div class="t"><span class="no">PROMPT 11</span><span class="ti">Keyword Extraction</span></div>
+        <button class="copy-btn" id="cp11" type="button">Copy prompt</button>
+      </div>
+      <div class="pd-term"><div class="ptext" id="p11"></div></div>
+    </div>
+    <p class="sample-note">the interactive edition adds one-click copy on all 50 prompts + a progress tracker</p>
+  </div>
+</section>
+
+<!-- WHAT'S INSIDE -->
+<section class="section" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">→ WHAT'S INSIDE</span>
+      <h2 class="section-title">Everything you need, nothing you don't.</h2>
+    </div>
+    <div class="inside reveal">
+      <div class="in-card"><div class="n">40</div><b>Core prompts, 6 sections</b><p>Resume rewriting · keyword &amp; gap analysis · cover letters · LinkedIn optimization · interview prep.</p></div>
+      <div class="in-card"><div class="n">+10</div><b>Bonus negotiation prompts</b><p>Offers, counters, competing offers, declining gracefully, the final confirmation checklist.</p></div>
+      <div class="in-card"><div class="n">✓</div><b>Honesty engineered in</b><p>Prompts are told to ask for real metrics, flag what changed, and never misrepresent your title.</p></div>
+      <div class="in-card"><div class="n">2</div><b>Editions included</b><p>Interactive HTML (one-click copy, progress tracking) + print-ready PDF edition.</p></div>
+      <div class="in-card"><div class="n">0</div><b>Setup required</b><p>No app, no account, no subscription beyond the AI assistant you already use. Free tiers fine.</p></div>
+      <div class="in-card"><div class="n">⏱</div><b>Built for repeat use</b><p>Every application, every posting — the chain runs again in minutes, not hours.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS WITH -->
+<section class="section">
+  <div class="wrap center">
+    <div class="section-head reveal">
+      <span class="kicker">→ WORKS WITH</span>
+    </div>
+    <div class="stamp-row reveal">
+      <span class="stamp">ChatGPT</span><span class="stamp">Claude</span><span class="stamp">Gemini</span>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="receipt reveal">
+      <div class="serif2">ATS Breakthrough Pack</div>
+      <div class="price">$9</div>
+      <div class="price-note">one-time · instant download — interactive kit + print PDF</div>
+      <hr>
+      <ul>
+        <li>50 prompts: 40 core + 10 bonus negotiation</li>
+        <li>Interactive edition — one-click copy, tracker</li>
+        <li>Print-ready PDF edition included</li>
+        <li>Personal &amp; professional use license</li>
+        <li>Works with ChatGPT, Claude &amp; Gemini</li>
+      </ul>
+      <a href="https://aiopentec.gumroad.com/l/ats-breakthrough-pack" class="btn-primary" style="display:block;text-align:center;">Get the pack</a>
+      <div class="multi">Also on <a href="https://nestuge.com/ats-breakthrough-pack">Nestuge</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="wrap" style="max-width:760px">
+    <div class="section-head reveal">
+      <span class="kicker">→ QUESTIONS</span>
+      <h2 class="section-title">FAQ</h2>
+    </div>
+    <div class="reveal">
+      <div class="faq-item open">
+        <div class="faq-q"><span>Is this just a list of prompts?</span><span class="mark">+</span></div>
+        <div class="faq-a"><p>It's a system. The 5-Minute Quick Start chains five prompts into one workflow per application, and every prompt carries honesty rules — the AI is told to ask for your real numbers instead of inventing them, and to flag every significant change it makes so you can verify it.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Will it work for my industry?</span><span class="mark">+</span></div>
+        <div class="faq-a"><p>Yes — the prompts are posting-driven, not industry-specific. You paste the actual job description, so the output adapts to whatever role you're targeting: tech, healthcare, finance, and beyond.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Do I need a paid AI subscription?</span><span class="mark">+</span></div>
+        <div class="faq-a"><p>No — ChatGPT, Claude, and Gemini's free tiers all handle these prompts. Paste text directly if your assistant doesn't accept file uploads.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Does this guarantee interviews?</span><span class="mark">+</span></div>
+        <div class="faq-a"><p>No — and anyone promising that is selling hype. What it guarantees is a faster, more honest, ATS-legible application process. Your experience still has to do the real work; the pack just makes sure the software can finally see it.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>What do I actually receive?</span><span class="mark">+</span></div>
+        <div class="faq-a"><p>Two files, instantly: the interactive edition (opens in any browser — one-click copy on all 50 prompts, progress tracker, works on mobile) and a print-ready PDF edition for paper reference. Personal and professional use included; reselling the pack itself isn't.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span class="fb">
+      <svg width="16" height="16" viewBox="0 0 66 66" style="display:block"><use href="#aimark-dark"/></svg>
+      ATS Breakthrough Pack · an <b style="color:var(--ink)">aiopentec</b> product
+    </span>
+    <span>
+      <a href="https://aiopentec.gumroad.com/l/ats-breakthrough-pack">Gumroad</a> ·
+      <a href="https://nestuge.com/ats-breakthrough-pack">Nestuge</a> ·
+      <a href="https://aiopentec.github.io/">More from aiopentec ↗</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+/* Prompt 11 — verbatim from the pack */
+const P11=`Extract every skill, tool, certification, and qualification keyword from this job posting, grouped into "required" and "preferred/nice to have" based on the posting's own language:
+[PASTE JOB POSTING]
+
+List them as a simple bullet list I can scan quickly.`;
+
+const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+document.getElementById("p11").innerHTML=
+ esc(P11).replace(/\[([^\]\n]+)\]/g,'<span class="fld">[$1]</span>');
+
+const btn=document.getElementById("cp11");
+btn.addEventListener("click",()=>{
+  const ok=()=>{btn.textContent="Copied ✓";btn.classList.add("ok");
+    setTimeout(()=>{btn.textContent="Copy prompt";btn.classList.remove("ok")},1300)};
+  if(navigator.clipboard){navigator.clipboard.writeText(P11).then(ok).catch(fb)}else fb();
+  function fb(){const ta=document.createElement("textarea");ta.value=P11;document.body.appendChild(ta);
+    ta.select();try{document.execCommand("copy")}catch(e){}document.body.removeChild(ta);ok()}
+});
+
+/* scroll reveal */
+const els=document.querySelectorAll(".reveal");
+if("IntersectionObserver" in window){
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});
+  els.forEach(el=>io.observe(el));
+}else{els.forEach(el=>el.classList.add("in"))}
+
+/* faq */
+document.querySelectorAll(".faq-item").forEach(item=>{
+  item.querySelector(".faq-q").addEventListener("click",()=>{
+    const wasOpen=item.classList.contains("open");
+    document.querySelectorAll(".faq-item").forEach(i=>i.classList.remove("open"));
+    if(!wasOpen)item.classList.add("open");
+  });
+});
+</script>
+</body>
+</html>
